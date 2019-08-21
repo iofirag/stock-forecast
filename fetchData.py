@@ -1,16 +1,18 @@
-
+from alpha_vantage.timeseries import TimeSeries
+from pprint import pprint
 
 def fetch():
-    from alpha_vantage.timeseries import TimeSeries
-    from pprint import pprint
     ts = TimeSeries(key='YOUR_API_KEY') # , output_format='pandas'
     # Get json object with the intraday data and another with  the call's metadata
     data, meta_data = ts.get_daily(symbol='TEVA')
     # pprint(data.head(2))
     # print(isinstance(data, dict)) 
+    ctr = 0
     for key, value in data.items():
+        ctr +=1
+        # if ()
         print(key, value)
-        lastTenDays = 
+        # lastTenDays = 
 
 # def get_eod_data2(symbol="AAPL.US", api_token="OeAFFmMliFG5orCUuwAKQ8l4WWFQ67YX", session=None):
 #     if session is None:
