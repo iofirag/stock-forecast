@@ -1,18 +1,29 @@
 from alpha_vantage.timeseries import TimeSeries
 from pprint import pprint
+from itertools import islice
+from patternScanner import indentifyCandles
+import sys
 
 def fetch():
-    ts = TimeSeries(key='YOUR_API_KEY') # , output_format='pandas'
-    # Get json object with the intraday data and another with  the call's metadata
-    data, meta_data = ts.get_daily(symbol='TEVA')
-    # pprint(data.head(2))
-    # print(isinstance(data, dict)) 
-    ctr = 0
-    for key, value in data.items():
-        ctr +=1
-        # if ()
-        print(key, value)
-        # lastTenDays = 
+    try:
+        ts = TimeSeries(key='YOUR_API_KEY') # , output_format='pandas'
+        # Get json object with the intraday data and another with  the call's metadata
+        stock_historical_data, stock_meta_data = ts.get_daily(symbol='TEVA')
+        # print(type(stock_historical_data)) 
+        last10days = take10First(stock_historical_data.items(), 10)
+        # print(last10days)
+        indentifyCandles(last10days)
+        # pprint(data.head(2))
+        # print(isinstance(data, dict)) 
+        # for key, value in last10days.items():
+        #     print(key, value)
+    except:
+        print("Unexpected error:", sys.exc_info()[0])
+        raise
+
+def take10First(iterable, n):
+    "Return first n items of the iterable as a list"
+    return list(islice(iterable, n))
 
 # def get_eod_data2(symbol="AAPL.US", api_token="OeAFFmMliFG5orCUuwAKQ8l4WWFQ67YX", session=None):
 #     if session is None:

@@ -8,48 +8,52 @@ def get_candle_funcs():
             funcs[name] = getattr(talib, name)  
     return funcs
 
-# sample_data = [  
-#     ['1/22/14', 10, 18,  17, 20],
-#     ['1/22/14', 10, 18,  17, 20],
-#     ['1/22/14', 10, 18,  17, 20],
-#     ['1/22/14', 10, 18,  17, 20],
-#     ['1/22/14', 10, 18,  17, 20],
-#     ['1/22/14', 10, 18,  17, 20],
-#     ['1/22/14', 10, 18,  17, 20],
-#     ['1/22/14', 10, 18,  17, 20],
-#     ['1/22/14', 10, 18,  17, 20],
-#     ['1/22/14', 10, 18,  17, 20],
-#     ['2/03/14', 44, 45, 43, 44.09],
+sample_data = [  
+    ['1/22/14', 10, 18,  17, 20],
+    ['1/22/14', 10, 18,  17, 20],
+    ['1/22/14', 10, 18,  17, 20],
+    ['1/22/14', 10, 18,  17, 20],
+    ['1/22/14', 10, 18,  17, 20],
+    ['1/22/14', 10, 18,  17, 20],
+    ['1/22/14', 10, 18,  17, 20],
+    ['1/22/14', 10, 18,  17, 20],
+    ['1/22/14', 10, 18,  17, 20],
+    ['1/22/14', 10, 18,  17, 20],
+    ['2/03/14', 44, 45, 43, 44.09],
 
-#     ['1/22/14', 10, 18,  17, 20],
-#     ['1/22/14', 10, 18,  17, 20],
-#     ['1/22/14', 10, 18,  17, 20],
-#     ['1/22/14', 10, 18,  17, 20],
-#     ['1/22/14', 10, 18,  17, 20],
-#     ['1/22/14', 10, 18,  17, 20],
-#     ['1/22/14', 10, 18,  17, 20],
-#     ['1/22/14', 10, 18,  17, 20],
-#     ['1/22/14', 10, 18,  17, 20],
-#     ['1/22/14', 10, 18,  17, 20],
-#     ['2/03/14', 44, 45, 43, 44.09], # today
-# ]
+    ['1/22/14', 10, 18,  17, 20],
+    ['1/22/14', 10, 18,  17, 20],
+    ['1/22/14', 10, 18,  17, 20],
+    ['1/22/14', 10, 18,  17, 20],
+    ['1/22/14', 10, 18,  17, 20],
+    ['1/22/14', 10, 18,  17, 20],
+    ['1/22/14', 10, 18,  17, 20],
+    ['1/22/14', 10, 18,  17, 20],
+    ['1/22/14', 10, 18,  17, 20],
+    ['1/22/14', 10, 18,  17, 20],
+    ['2/03/14', 44, 45, 43, 44.09], # today
+]
 
-# convert data to columns  
-sample_data = numpy.column_stack(sample_data)
+indentifyCandles(sample_data)
 
-# extract the columns we need, making sure to make them 64-bit floats  
-o = sample_data[1].astype(float)  
-h = sample_data[2].astype(float)  
-l = sample_data[3].astype(float)  
-c = sample_data[4].astype(float)
+def indentifyCandles(historical_data):
+        # convert data to columns  
+        numpyData = numpy.column_stack(historical_data)
 
-funcs = get_candle_funcs()
+        # extract the columns we need, making sure to make them 64-bit floats  
+        print(numpyData)
+        o = numpyData[1].astype(float)  
+        h = numpyData[2].astype(float)  
+        l = numpyData[3].astype(float)  
+        c = numpyData[4].astype(float)
 
-results = {}  
-for f in funcs:  
-    res = funcs[f](o, h, l, c)
-    if res[-1] > 0:
-        results[f] = res
+        funcs = get_candle_funcs()
 
-print('')
-print('results:',results)
+        results = {}  
+        for f in funcs:  
+            res = funcs[f](o, h, l, c)
+            if res[-1] > 0:
+                results[f] = res
+
+        print('')
+        print('results:',results)
