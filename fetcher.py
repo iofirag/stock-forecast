@@ -63,12 +63,22 @@ def cleanDfNanRows(df):
 
 def investigateTickerDf(df):
     cleanData = cleanDfNanRows(df)
+    tickerResult = {
+        'tickerDetectionList': tickerIndicator1(df),
+        'volumeIncLast3Days': tickerIndicator2(df),
+    }
+    return tickerResult
+
+def tickerIndicator1(df):
     function_list = get_candle_funcs()
     tickerDetectionList = []
     for pattern_detection in function_list:
-        pattern_detection_result = function_list[pattern_detection](cleanData.Open, cleanData.High, cleanData.Low, cleanData.Close)
+        pattern_detection_result = function_list[pattern_detection](df.Open, df.High, df.Low, df.Close)
         # print(pattern_detection_result)
         if pattern_detection_result[-1] > 0:
             tickerDetectionList.append(pattern_detection)
-
     return tickerDetectionList
+
+def tickerIndicator2(df):
+    length = len(df)
+    return df.Volume[length-1] > df.Volume[length-2] > df.Volume[length-3]
