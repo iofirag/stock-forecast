@@ -1,8 +1,8 @@
-import fetchData
+import investController
 
 def main():
-    fetchData.fetch()
-
+    result = investController.investigateTickers()
+    print(result)
 
 if __name__ == "__main__":
     main()

@@ -1,6 +1,94 @@
+# build new list from O|H|C|L where data is not NaN
+            # openList = [i for i in data[ticker].Open if not np.isnan(i)]
+            # data[ticker].High = [i for i in data[ticker].High if not i == 'NaN']
+            # data[ticker].Low = [i for i in data[ticker].Low if not i == 'NaN']
+            # data[ticker].Close = [i for i in data[ticker].Close if not i == 'NaN']
+            # data[ticker].Volume = [i for i in data[ticker].Volume if not i == 'NaN']
+            # print(data[ticker].Open[-1])
+            # index = 9
+            # dfData = {}
+            # while index >= 0:
+            #     dfData[ticker] = {
+
+            #     }
+            #     dfData[ticker].index
+            # print(type(data))
+            
+            # data[ticker, 'indux'] = list(range(len(data[ticker].index))) # work!
+
+            # tickerDf = data[ticker]
+            # tickerDf.drop(tickerData.index[i])
+            # print(np.isnan( (data[ticker].loc['2020-03-20', : ].Open) ))
+
+            # print (data[ticker].loc[ np.isnan(data[ticker].Open) ])
+            # print (data[ticker].drop(np.isnan(data[ticker].Open)))
+
+            #     # for i in range(period_days):
+            #         print(data[ticker])
+            #         # print(f'Open - {data[ticker].Open[i]:f}')
+            #         # print(f'High - {data[ticker].High[i]:f}')
+            #         # print(f'Low - {data[ticker].Low[i]:f}')
+            #         # print(f'Close - {data[ticker].Close[i]:f}')
+            #         # print(f'Volume - {data[ticker].Volume[i]:.0f}')
+            #         # print('--------------------')
+
+                    # data[ticker] = tickerData
+                    # data[ticker] = tickerData
+                    # data[ticker].drop( data[ticker].index[i], inplace=True)
+                
+                # print(data[ticker][data[ticker].index[i]])
+                # print(data[ticker][data[ticker].index])
+                    # dateKey = str(data[ticker].index[i]).split(' ')[0]
+                    # print(dateKey)
+
+            #         key = data[ticker].index[i]
+            #         # print(data[ticker].loc[key, : ])
+            #         # print(data[ticker].iloc[i, : ])
+                    
+            #         data[ticker].drop(key, inplace=True)
+            #         # tickerData = data[ticker]
+            #         # print(tickerData)
+
+###################################################
+            # print('')
+            # print('results:',results)
+
+            # df = data[ticker].Open
+            # candle_list = df.values.tolist()
+            # print (candle_list)
+        # ts = TimeSeries(key='0LYQQSYMZAYEZLJP', indexing_type='integer') # , output_format='pandas'
+        # # # Get json object with the intraday data and another with  the call's metadata
+        # data, meta_data = ts.get_daily(symbol='TEVA', outputsize='compact')
+        # # help(ts.get_daily)
+        # print(data) 
+        # last10days = take10First(stock_historical_data.items(), 10)
+        # # print(last10days)
+        # indentifyCandles(last10days)
+        # # pprint(data.head(2))
+        # # print(isinstance(data, dict)) 
+        # # for key, value in last10days.items():
+        # #     print(key, value)
 
 # print(talib.CDLDOJI(o,h,l,c))
 
+#######################################################
+# def take10First(iterable, n):
+#     "Return first n items of the iterable as a list"
+#     return list(islice(iterable, n))
+
+# def get_eod_data2(symbol="AAPL.US", api_token="OeAFFmMliFG5orCUuwAKQ8l4WWFQ67YX", session=None):
+#     if session is None:
+#         session = requests.Session()
+#         url = "https://eodhistoricaldata.com/api/eod/%s" % symbol
+#         params = {
+#             "api_token": api_token
+#         }
+#         r = session.get(url, params=params)
+#         if r.status_code == requests.codes.ok:
+#             df = pd.read_csv(StringIO(r.text), skipfooter=1, parse_dates=[0], index_col=0)
+#             return df
+#     else:
+#         raise Exception(r.status_code, r.reason, url)
 ##############################################################################
 # def get_candle_funcs():  
 #     funcs = {}  
