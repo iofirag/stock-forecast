@@ -2,6 +2,7 @@ from patternScanner import get_candle_funcs
 import yfinance as yf
 from config import ticker_list, period_days
 import numpy as np
+import utils
 
 def fetchData():
     try:
@@ -44,7 +45,9 @@ def fetchData():
         results = {}
         for ticker in ticker_list:
             print('\n' + ticker + ':')
-            results[ticker] = investigateTickerDf(data[ticker])
+            tickerInvestigationData = investigateTickerDf(data[ticker])
+            if tickerInvestigationData:
+                results[ticker] = tickerInvestigationData
 
         return results
 
@@ -63,22 +66,32 @@ def cleanDfNanRows(df):
 
 def investigateTickerDf(df):
     cleanData = cleanDfNanRows(df)
-    tickerResult = {
-        'tickerDetectionList': tickerIndicator1(df),
-        'volumeIncLast3Days': tickerIndicator2(df),
-    }
+    tickerResult = {}
+    candlestickPatternsIndicatorRes = candlestickPatternsIndicator(df)
+    threeDaysincreasedVolumeIndicatorRes = threeDaysincreasedVolumeIndicator(df)
+
+    if candlestickPatternsIndicatorRes:
+        tickerResult['candlestickPatternsIndicator'] = candlestickPatternsIndicatorRes
+    
+    if threeDaysincreasedVolumeIndicatorRes:
+        tickerResult['threeDaysincreasedVolumeIndicator'] = threeDaysincreasedVolumeIndicatorRes
     return tickerResult
 
-def tickerIndicator1(df):
+def candlestickPatternsIndicator(df):
     function_list = get_candle_funcs()
-    tickerDetectionList = []
+    tickerDetectionList = {}
     for pattern_detection in function_list:
         pattern_detection_result = function_list[pattern_detection](df.Open, df.High, df.Low, df.Close)
         # print(pattern_detection_result)
-        if pattern_detection_result[-1] > 0:
-            tickerDetectionList.append(pattern_detection)
+        if pattern_detection_result[-1] > 0 or True:
+            print(pattern_detection)
+            patternInformation = utils.getPatternInformation(pattern_detection)
+            tickerDetectionList[pattern_detection] = {
+                'direction': patternInformation.get('direction', ''),
+                'reliability': patternInformation.get('reliability', ''),
+            }
     return tickerDetectionList
 
-def tickerIndicator2(df):
+def threeDaysincreasedVolumeIndicator(df):
     length = len(df)
     return df.Volume[length-1] > df.Volume[length-2] > df.Volume[length-3]

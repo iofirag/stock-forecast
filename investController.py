@@ -1,4 +1,5 @@
 from fetcher import fetchData
 
 def investigateTickers():
-  return fetchData()
+  tickersResult = fetchData()
+  return tickersResult
