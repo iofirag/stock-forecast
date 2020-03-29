@@ -14,13 +14,8 @@ def getLongTermOptions():
   return dict(fetchDefaultOptions, **longTermOptions)
 
 def convert(o):
-    if isinstance(o, np.int32): return int(o)
-    if isinstance(o, np.bool_): return bool(o)
+    if isinstance(o, np.generic): return np.asscalar(o)
     raise TypeError
-
-
-
-
 
 
 
