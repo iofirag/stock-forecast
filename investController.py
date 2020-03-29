@@ -1,6 +1,11 @@
 from fetcher import fetchData
-from config import tickerList, fetchOptions
+from statics import tickerList
+import utils
 
 def investigateTickers():
-  tickersResult = fetchData(tickerList, '10d', '1d', fetchOptions)
+  tickersResult = {
+    'shortTermResult': fetchData(tickerList, utils.getShortTermOptions()),
+    'mediumTermResult': fetchData(tickerList, utils.getMediumTermOptions()),
+    'longTermResult': fetchData(tickerList, utils.getLongTermOptions())
+  }
   return tickersResult

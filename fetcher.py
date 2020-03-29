@@ -2,8 +2,9 @@ from patternScanner import get_candle_funcs
 import yfinance as yf
 import numpy as np
 import utils
+import statics
 
-def fetchData(tickerList, period, interval, fetchOptions):
+def fetchData(tickerList, fetchOptions):
     try:
         data = yf.download(  # or pdr.get_data_yahoo(...
             # tickers list or string as well
@@ -13,12 +14,12 @@ def fetchData(tickerList, period, interval, fetchOptions):
             # use "period" instead of start/end
             # valid periods: 1d,5d,1mo,3mo,6mo,1y,2y,5y,10y,ytd,max
             # (optional, default is '1mo')
-            period = period,
+            period = fetchOptions['period'],
 
             # fetch data by interval (including intraday if period < 60 days)
             # valid intervals: 1m,2m,5m,15m,30m,60m,90m,1h,1d,5d,1wk,1mo,3mo
             # (optional, default is '1d')
-            interval = interval,
+            interval = fetchOptions['interval'],
 
             # group by ticker (to access via data['SPY'])
             # (optional, default is 'column')
@@ -43,7 +44,6 @@ def fetchData(tickerList, period, interval, fetchOptions):
         
         results = {}
         for ticker in tickerList:
-            print('\n' + ticker + ':')
             tickerInvestigationData = investigateTickerDf(data[ticker])
             if tickerInvestigationData:
                 results[ticker] = tickerInvestigationData
@@ -62,12 +62,15 @@ def cleanDfNanRows(df):
 
     return df.drop(df.index[deleteIndexes])
 
+def get10dfRowsFromLast(df):
+    return df.tail(statics.maxDays)
 
 def investigateTickerDf(df):
     cleanDf = cleanDfNanRows(df)
+    last10dfRows = get10dfRowsFromLast(cleanDf)
     tickerResult = {}
-    candlestickPatternsIndicatorRes = candlestickPatternsIndicator(cleanDf)
-    threeDaysincreasedVolumeIndicatorRes = threeDaysincreasedVolumeIndicator(cleanDf)
+    candlestickPatternsIndicatorRes = candlestickPatternsIndicator(last10dfRows)
+    threeDaysincreasedVolumeIndicatorRes = threeDaysincreasedVolumeIndicator(last10dfRows)
 
     if candlestickPatternsIndicatorRes:
         tickerResult['candlestickPatternsIndicator'] = candlestickPatternsIndicatorRes
@@ -77,18 +80,27 @@ def investigateTickerDf(df):
     return tickerResult
 
 def candlestickPatternsIndicator(df):
-    function_list = get_candle_funcs()
-    tickerDetectionList = {}
-    for pattern_detection in function_list:
-        pattern_detection_result = function_list[pattern_detection](df.Open, df.High, df.Low, df.Close)
-        # print(pattern_detection_result)
-        if pattern_detection_result[-1] > 0:
-            patternInformation = utils.getPatternInformation(pattern_detection)
-            tickerDetectionList[pattern_detection] = {
+    patternNameList = get_candle_funcs()
+    tickerDetectionResult = {}
+    for patternName in patternNameList:
+        patternNameResult = patternNameList[patternName](df.Open, df.High, df.Low, df.Close)
+
+        patternInformation = utils.getPatternInformation(patternName)
+        filteredPatternNameResultList = patternNameResult[patternNameResult != 0]
+
+        for i in range(len(filteredPatternNameResultList)):
+            datetimeReadable = filteredPatternNameResultList.index[i].strftime('%Y-%m-%d')
+            if not datetimeReadable in tickerDetectionResult:
+                tickerDetectionResult[datetimeReadable] = []
+            
+            tickerDetectionResult[datetimeReadable].append({
+                'patternName': patternName,
+                'patternType': patternInformation.get('patternType', ''),
                 'direction': patternInformation.get('direction', ''),
                 'reliability': patternInformation.get('reliability', ''),
-            }
-    return tickerDetectionList
+                'value': filteredPatternNameResultList[i],
+            })
+    return tickerDetectionResult
 
 def threeDaysincreasedVolumeIndicator(df):
     length = len(df)
