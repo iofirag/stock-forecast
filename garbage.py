@@ -1,3 +1,15 @@
+# def cleanDfNanRows(df):
+#     deleteIndexes = []
+#     for i in range(len(df)):
+#         if np.isnan(df.Open[i]):
+#             deleteIndexes.append(i)
+
+#     return df.drop(df.index[deleteIndexes])
+
+# def get10dfRowsFromLast(df):
+#     return df.tail(statics.maxDays)
+
+################################################
 # build new list from O|H|C|L where data is not NaN
             # openList = [i for i in data[ticker].Open if not np.isnan(i)]
             # data[ticker].High = [i for i in data[ticker].High if not i == 'NaN']

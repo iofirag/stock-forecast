@@ -10,6 +10,7 @@ def fetchData(tickerList, fetchOptions):
             # tickers list or string as well
             tickers = str(' '.join(tickerList)),
 
+            # start="2014-04-01", end="2014-04-10",
             # start="2020-03-01", end="2020-03-04",
             # use "period" instead of start/end
             # valid periods: 1d,5d,1mo,3mo,6mo,1y,2y,5y,10y,ytd,max
@@ -54,23 +55,15 @@ def fetchData(tickerList, fetchOptions):
         print("Unexpected error:", sys.exc_info()[0])
         raise
 
-def cleanDfNanRows(df):
-    deleteIndexes = []
-    for i in range(len(df)):
-        if np.isnan(df.Open[i]):
-            deleteIndexes.append(i)
-
-    return df.drop(df.index[deleteIndexes])
-
-def get10dfRowsFromLast(df):
-    return df.tail(statics.maxDays)
-
 def investigateTickerDf(df):
-    cleanDf = cleanDfNanRows(df)
-    last10dfRows = get10dfRowsFromLast(cleanDf)
+    # clean df rows from nan values
+    if 'Adj Close' in df.columns:
+        df = df.drop('Adj Close', axis=1)  # axis=1 for columns
+
+    cleanDf = df.dropna()
     tickerResult = {}
-    candlestickPatternsIndicatorRes = candlestickPatternsIndicator(last10dfRows)
-    threeDaysincreasedVolumeIndicatorRes = threeDaysincreasedVolumeIndicator(last10dfRows)
+    candlestickPatternsIndicatorRes = candlestickPatternsIndicator(cleanDf)
+    threeDaysincreasedVolumeIndicatorRes = threeDaysincreasedVolumeIndicator(cleanDf)
 
     if candlestickPatternsIndicatorRes:
         tickerResult['candlestickPatternsIndicator'] = candlestickPatternsIndicatorRes

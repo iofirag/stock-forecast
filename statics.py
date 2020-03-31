@@ -1,4 +1,5 @@
-tickerList = ['SPY','AAPL','MSFT','GOOGL','TEVA','BEZQ.TA']
+tickerList = ['BEZQ.TA', 'DSCT.TA']
+# tickerList = ['SPY','MSFT','GOOGL','TEVA','BEZQ.TA']
 
 # https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/
 candleStickSwitcher = {    
@@ -19,7 +20,7 @@ candleStickSwitcher = {
   'CDLDARKCLOUDCOVER': lambda: {'patternType': '?', 'direction': '<', 'reliability': '>'},
   'CDLDOJI': lambda: {'patternType': '?', 'direction': '<', 'reliability': '>'},
   'CDLDOJISTAR': lambda: {'patternType': 'reversal pattern', 'direction': '<', 'reliability': 'medium'}, # V
-  'CDLDRAGONFLYDOJI': lambda: {'patternType': '?', 'direction': '<', 'reliability': '>'},
+  'CDLDRAGONFLYDOJI': lambda: {'patternType': '?', 'direction': '<', 'reliability': '>'}, # not high
   'CDLENGULFING': lambda: {'patternType': '?', 'direction': '<', 'reliability': '>'}, # https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLENGULFING.c#l212 * outInteger is positive (1 to 100) when < or negative (-1 to -100) when bearish:
   'CDLEVENINGDOJISTAR': lambda: {'patternType': '?', 'direction': '<', 'reliability': '>'},
   'CDLEVENINGSTAR': lambda: {'patternType': '?', 'direction': '<', 'reliability': '>'},
@@ -67,23 +68,21 @@ candleStickSwitcher = {
 
 fetchDefaultOptions = {
   'group_by': 'ticker',
-  'auto_adjust': True,
+  'auto_adjust': False,
   'prepost': False,
   'threads': True,
   'proxy': None
 }
 
-shortTermOptions = {  # short - 10 days
-  'period': '10d',
+shortTermOptions = {  # short term - 10 days
+  'period': '3wk',
   'interval': '1d'
 }
-mediumTermOptions = {  # > - 3 month
-  'period': '3mo',
+mediumTermOptions = {  # medium term > - 3 month
+  'period': '7mo',
   'interval': '1wk'
 }
-longTermOptions = { # long - 10 month
-  'period': '10mo',
+longTermOptions = { # long term - 10 month
+  'period': '2y',
   'interval': '1mo'
 }
-
-maxDays = 10
