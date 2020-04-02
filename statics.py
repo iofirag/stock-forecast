@@ -80,7 +80,7 @@ candleStickSwitcher = {
 #     */
       # (lambda _value: PatternSignal.Bearish.name if _value < 0 else PatternSignal.Bullish.name)(value),
   # 'CDL2CROWS': CDL2CROWS,
-  'CDL2CROWS': lambda value: { # CDL2CROWS
+  'CDL2CROWS': lambda value,trend: { # CDL2CROWS
     'patternType': PatternType.Reversal.name,
     'JapaneseName': 'niwa garasu',
     'patternSignal': PatternSignal.Bearish.name if value < 0 else PatternSignal.Bullish.name, 
@@ -113,7 +113,7 @@ candleStickSwitcher = {
   #   */
   ## high. reversal. 78% bearish
   # 'CDL3BLACKCROWS': CDL3BLACKCROWS,
-  'CDL3BLACKCROWS': lambda value: {
+  'CDL3BLACKCROWS': lambda value,trend: {
     'patternType': PatternType.Reversal.name,
     'JapaneseName': 'niwa garasu',
     'patternSignal': PatternSignal.Bearish.name if value < 0 else PatternSignal.Bullish.name, 
@@ -144,7 +144,7 @@ candleStickSwitcher = {
   #   * down is significant when it appears in an uptrend, while this function does not consider the trend
   #   */
   # 'CDL3INSIDE': CDL3INSIDE,
-  'CDL3INSIDE': lambda value: {
+  'CDL3INSIDE': lambda value,trend: {
     'patternType': PatternType.Reversal.name,
     'patternSignal': PatternSignal.Bullish.name if value > 0 else PatternSignal.Bearish.name if value < 0 else PatternSignal.N.name,
     'reliability': PatternReliability.Medium.name,
@@ -172,7 +172,7 @@ candleStickSwitcher = {
   #   */
   ## high. reversal. 84% bullish. 65% bearish
   # 'CDL3LINESTRIKE': CDL3LINESTRIKE,
-  'CDL3LINESTRIKE': lambda value: {
+  'CDL3LINESTRIKE': lambda value,trend: {
     'patternType': PatternType.Continuation.name,
     'patternSignal': PatternSignal.Bullish.name if value > 0 else PatternSignal.Bearish.name if value < 0 else PatternSignal.N.name,
     'reliability': PatternReliability.Low.name,
@@ -187,7 +187,7 @@ candleStickSwitcher = {
   },
   
   # 'CDL3OUTSIDE': CDL3OUTSIDE,
-  'CDL3OUTSIDE': lambda value: {
+  'CDL3OUTSIDE': lambda value,trend: {
     'patternType': PatternType.N.name,
     'patternSignal': PatternSignal.N.name if True else False,
     'reliability': PatternReliability.N.name,
@@ -198,7 +198,7 @@ candleStickSwitcher = {
     'quantshare-info': """""",
   },
 
-  'CDL3STARSINSOUTH': lambda value: {
+  'CDL3STARSINSOUTH': lambda value,trend: {
     'patternType': PatternType.N,
     'patternSignal': PatternSignal.N.name if True else False,
     'reliability': PatternReliability.N.name,
@@ -208,7 +208,7 @@ candleStickSwitcher = {
     'quantshare-description': """""",
     'quantshare-info': """""",
   },
-  'CDL3WHITESOLDIERS': lambda value: {
+  'CDL3WHITESOLDIERS': lambda value,trend: {
     'patternType': PatternType.N,
     'patternSignal': PatternSignal.N.name if True else False,
     'reliability': PatternReliability.N.name,
@@ -220,74 +220,74 @@ candleStickSwitcher = {
   },
 
   ## high. reversal. 70% bullish
-  'CDLABANDONEDBABY': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLABANDONEDBABY': lambda value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
   
-  'CDLADVANCEBLOCK': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLBELTHOLD': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLADVANCEBLOCK': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLBELTHOLD': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
 
   ## high. reversal. 63% bearish
-  'CDLBREAKAWAY': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLBREAKAWAY': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
   
-  'CDLCLOSINGMARUBOZU': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLCONCEALBABYSWALL': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLCOUNTERATTACK': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLDARKCLOUDCOVER': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLDOJI': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLDOJISTAR': lambda: {'patternType': 'reversal pattern', 'patternSignal': '<', 'reliability': 'medium'}, # V
-  'CDLDRAGONFLYDOJI': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'}, # not high
-  'CDLENGULFING': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'}, # https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLENGULFING.c#l212 * outInteger is positive (1 to 100) when < or negative (-1 to -100) when bearish:
-  'CDLEVENINGDOJISTAR': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLCLOSINGMARUBOZU': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLCONCEALBABYSWALL': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLCOUNTERATTACK': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLDARKCLOUDCOVER': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLDOJI': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLDOJISTAR': lambda  value,trend: {'patternType': 'reversal pattern', 'patternSignal': '<', 'reliability': 'medium'}, # V
+  'CDLDRAGONFLYDOJI': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'}, # not high
+  'CDLENGULFING': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'}, # https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLENGULFING.c#l212 * outInteger is positive (1 to 100) when < or negative (-1 to -100) when bearish:
+  'CDLEVENINGDOJISTAR': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
 
   ## high. reversal. 72% bearish
-  'CDLEVENINGSTAR': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLEVENINGSTAR': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
 
-  'CDLGAPSIDESIDEWHITE': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLGRAVESTONEDOJI': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLHAMMER': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLHANGINGMAN': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLHARAMI': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLHARAMICROSS': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLHIGHWAVE': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLHIKKAKE': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLHIKKAKEMOD': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLHOMINGPIGEON': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLIDENTICAL3CROWS': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLINNECK': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLGAPSIDESIDEWHITE': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLGRAVESTONEDOJI': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLHAMMER': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLHANGINGMAN': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLHARAMI': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLHARAMICROSS': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLHIGHWAVE': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLHIKKAKE': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLHIKKAKEMOD': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLHOMINGPIGEON': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLIDENTICAL3CROWS': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLINNECK': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
 
   ## high. continuation. 65% bearish
-  'CDLINVERTEDHAMMER': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLINVERTEDHAMMER': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
 
-  'CDLKICKING': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLKICKINGBYLENGTH': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLLADDERBOTTOM': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLLONGLEGGEDDOJI': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLLONGLINE': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLMARUBOZU': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLKICKING': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLKICKINGBYLENGTH': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLLADDERBOTTOM': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLLONGLEGGEDDOJI': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLLONGLINE': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLMARUBOZU': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
 
   ## high. continuation. 61% bearish
-  'CDLMATCHINGLOW': lambda: {'patternType': 'reversal pattern', 'patternSignal': '<', 'reliability': '>'},
+  'CDLMATCHINGLOW': lambda  value,trend: {'patternType': 'reversal pattern', 'patternSignal': '<', 'reliability': '>'},
 
-  'CDLMATHOLD': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLMORNINGDOJISTAR': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLMORNINGSTAR': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLONNECK': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLPIERCING': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLRICKSHAWMAN': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLRISEFALL3METHODS': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLSEPARATINGLINES': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLSHOOTINGSTAR': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLSHORTLINE': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLSPINNINGTOP': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLSTALLEDPATTERN': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLSTICKSANDWICH': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLTAKURI': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLMATHOLD': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLMORNINGDOJISTAR': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLMORNINGSTAR': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLONNECK': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLPIERCING': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLRICKSHAWMAN': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLRISEFALL3METHODS': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLSEPARATINGLINES': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLSHOOTINGSTAR': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLSHORTLINE': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLSPINNINGTOP': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLSTALLEDPATTERN': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLSTICKSANDWICH': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLTAKURI': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
 
   ## high. continuation. 57% bullish 
-  'CDLTASUKIGAP': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLTASUKIGAP': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
   
-  'CDLTHRUSTING': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLTRISTAR': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
-  'CDLUNIQUE3RIVER': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLTHRUSTING': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLTRISTAR': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLUNIQUE3RIVER': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
 
   # /* Proceed with the calculation for the requested range.
   #   * Must have:
@@ -301,9 +301,9 @@ candleStickSwitcher = {
   #   * the user should consider that an upside gap two crows is significant when it appears in an uptrend, 
   #   * while this function does not consider the trend
   #   */
-  'CDLUPSIDEGAP2CROWS': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLUPSIDEGAP2CROWS': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
   
-  'CDLXSIDEGAP3METHODS': lambda: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
+  'CDLXSIDEGAP3METHODS': lambda  value,trend: {'patternType': '?', 'patternSignal': '<', 'reliability': '>'},
 }
 
 # still missing:

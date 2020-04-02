@@ -1,8 +1,9 @@
 from statics import candleStickSwitcher, fetchDefaultOptions, shortTermOptions, mediumTermOptions, longTermOptions
 import numpy as np
 
-def getPatternInformation(patternName, value):
-  return candleStickSwitcher.get(patternName, (lambda x: {'direction': 'Invalid pattern', 'reliability': 'Invalid pattern', 'value': x}))(value)
+def getPatternInformation(patternName, value, trend):
+  func = candleStickSwitcher.get(patternName, lambda _value,_trend: {'error': f'missing pattern={patternName} with value={_value} in trend={_trend}'})
+  return func(value, trend)
 
 def getShortTermOptions():
   return dict(fetchDefaultOptions, **shortTermOptions)
@@ -32,9 +33,8 @@ def singleton(class_):
         return instances[class_]
     return getinstance
 
-
-
-
+def identifyTrend(open, high, low, close, volume):
+  pass
 
 
 

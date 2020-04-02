@@ -74,6 +74,8 @@ def investigateTickerDf(df):
 def candlestickPatternsIndicator(df):
     patternNameList = get_candle_funcs()
     tickerDetectionResult = {}
+    trend = utils.identifyTrend(df.Open, df.High, df.Low, df.Close, df.Volume)
+
     for patternName in patternNameList:
         patternNameResult = patternNameList[patternName](df.Open, df.High, df.Low, df.Close)
 
@@ -81,7 +83,8 @@ def candlestickPatternsIndicator(df):
 
         for i in range(len(filteredPatternNameResultList)):
             value = filteredPatternNameResultList[i]
-            patternInformation = utils.getPatternInformation(patternName, value)
+            
+            patternInformation = utils.getPatternInformation(patternName, value, trend)
             patternInformation['patternName'] = patternName
             # confirmation
             # there are more reasons this pattern can be confirm like trend
