@@ -55,12 +55,11 @@ def fetchData(tickerList, fetchOptions):
         print("Unexpected error:", sys.exc_info()[0])
         raise
 
-def investigateTickerDf(df):
-    # clean df rows from nan values
-    if 'Adj Close' in df.columns:
-        df = df.drop('Adj Close', axis=1)  # axis=1 for columns
 
-    cleanDf = df.dropna()
+
+def investigateTickerDf(df):
+    cleanDf = utils.cleanDf(df)
+
     tickerResult = {}
     candlestickPatternsIndicatorRes = candlestickPatternsIndicator(cleanDf)
     threeDaysincreasedVolumeIndicatorRes = threeDaysincreasedVolumeIndicator(cleanDf)
@@ -78,21 +77,25 @@ def candlestickPatternsIndicator(df):
     for patternName in patternNameList:
         patternNameResult = patternNameList[patternName](df.Open, df.High, df.Low, df.Close)
 
-        patternInformation = utils.getPatternInformation(patternName)
         filteredPatternNameResultList = patternNameResult[patternNameResult != 0]
 
         for i in range(len(filteredPatternNameResultList)):
+            value = filteredPatternNameResultList[i]
+            patternInformation = utils.getPatternInformation(patternName, value)
+            patternInformation['patternName'] = patternName
+            # confirmation
+            # there are more reasons this pattern can be confirm like trend
+            # trend
+            if (value > 100 or value < -100):
+                patternInformation['confirmedBar'] = True
+                
+
             datetimeReadable = filteredPatternNameResultList.index[i].strftime('%Y-%m-%d')
             if not datetimeReadable in tickerDetectionResult:
                 tickerDetectionResult[datetimeReadable] = []
             
-            tickerDetectionResult[datetimeReadable].append({
-                'patternName': patternName,
-                'patternType': patternInformation.get('patternType', ''),
-                'direction': patternInformation.get('direction', ''),
-                'reliability': patternInformation.get('reliability', ''),
-                'value': filteredPatternNameResultList[i],
-            })
+            tickerDetectionResult[datetimeReadable].append(patternInformation)
+
     return tickerDetectionResult
 
 def threeDaysincreasedVolumeIndicator(df):
