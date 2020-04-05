@@ -4,6 +4,7 @@ https://towardsdatascience.com/best-5-free-stock-market-apis-in-2019-ad91dddec98
 ta-lib:
   python:
     https://github.com/mrjbq7/ta-lib
+      https://mrjbq7.github.io/ta-lib/func_groups/pattern_recognition.html
     http://ta-lib.org/function.html
       ta-lib open source code:
       https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/
@@ -40,3 +41,7 @@ https://finance.yahoo.com/
 learning:
 https://www.investing.com/
 https://www.quantopian.com/
+http://tutorials.topstockresearch.com/
+https://www.feedroll.com/candlestick-patterns/
+  https://www.feedroll.com/candlestick-patterns/847-japanese-candlestick-chart/
+http://www.traderencyclopedia.com/wiki/index.php/

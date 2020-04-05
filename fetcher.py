@@ -59,9 +59,12 @@ def fetchData(tickerList, fetchOptions):
 
 def investigateTickerDf(df):
     cleanDf = utils.cleanDf(df)
-
+    trend = utils.identifyTrend(df.Open, df.High, df.Low, df.Close, df.Volume)
+    
     tickerResult = {}
-    candlestickPatternsIndicatorRes = candlestickPatternsIndicator(cleanDf)
+    # more indicators:
+    # http://tutorials.topstockresearch.com/candlestick/Bearish/DarkCloudCover/TutotrialOnDarkCloudCoverChartPattern.html
+    candlestickPatternsIndicatorRes = candlestickPatternsIndicator(cleanDf, trend)
     threeDaysincreasedVolumeIndicatorRes = threeDaysincreasedVolumeIndicator(cleanDf)
 
     if candlestickPatternsIndicatorRes:
@@ -71,32 +74,23 @@ def investigateTickerDf(df):
         tickerResult['threeDaysincreasedVolumeIndicator'] = threeDaysincreasedVolumeIndicatorRes
     return tickerResult
 
-def candlestickPatternsIndicator(df):
+def candlestickPatternsIndicator(df, trend):
     patternNameList = get_candle_funcs()
     tickerDetectionResult = {}
-    trend = utils.identifyTrend(df.Open, df.High, df.Low, df.Close, df.Volume)
-
+    
     for patternName in patternNameList:
         patternNameResult = patternNameList[patternName](df.Open, df.High, df.Low, df.Close)
 
+        # Remove all undetected rows (equal to 0)
         filteredPatternNameResultList = patternNameResult[patternNameResult != 0]
 
         for i in range(len(filteredPatternNameResultList)):
-            value = filteredPatternNameResultList[i]
-            
-            patternInformation = utils.getPatternInformation(patternName, value, trend)
-            patternInformation['patternName'] = patternName
-            # confirmation
-            # there are more reasons this pattern can be confirm like trend
-            # trend
-            if (value > 100 or value < -100):
-                patternInformation['confirmedBar'] = True
-                
-
+            # Datetime readable string
             datetimeReadable = filteredPatternNameResultList.index[i].strftime('%Y-%m-%d')
             if not datetimeReadable in tickerDetectionResult:
                 tickerDetectionResult[datetimeReadable] = []
             
+            patternInformation = utils.getPatternInformation(patternName, filteredPatternNameResultList[i], trend)
             tickerDetectionResult[datetimeReadable].append(patternInformation)
 
     return tickerDetectionResult

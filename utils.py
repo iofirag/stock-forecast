@@ -2,8 +2,19 @@ from statics import candleStickSwitcher, fetchDefaultOptions, shortTermOptions, 
 import numpy as np
 
 def getPatternInformation(patternName, value, trend):
-  func = candleStickSwitcher.get(patternName, lambda _value,_trend: {'error': f'missing pattern={patternName} with value={_value} in trend={_trend}'})
-  return func(value, trend)
+  detectedFunction = candleStickSwitcher.get(patternName, lambda _value,_trend: {'error': f'missing pattern={patternName} with value={_value} in trend={_trend}'})
+  patternInformation = detectedFunction(value, trend)
+
+  # confirmation
+  # there are more reasons this pattern can be confirm like trend
+  # trend
+  if (value > 100 or value < -100):
+      patternInformation['confirmedBar'] = True
+
+  return {**patternInformation, **{
+    'patternName': patternName,
+    'value': value
+  }}
 
 def getShortTermOptions():
   return dict(fetchDefaultOptions, **shortTermOptions)
