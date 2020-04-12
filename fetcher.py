@@ -4,6 +4,7 @@ import numpy as np
 import utils
 import statics
 
+
 def fetchData(tickerList, fetchOptions):
     try:
         data = yf.download(  # or pdr.get_data_yahoo(...
@@ -64,14 +65,19 @@ def investigateTickerDf(df):
     tickerResult = {}
     # more indicators:
     # http://tutorials.topstockresearch.com/candlestick/Bearish/DarkCloudCover/TutotrialOnDarkCloudCoverChartPattern.html
+    # momentum indicator
+
+    # candlestick patterns indicators
     candlestickPatternsIndicatorRes = candlestickPatternsIndicator(cleanDf, trend)
-    threeDaysincreasedVolumeIndicatorRes = threeDaysincreasedVolumeIndicator(cleanDf)
+
+    # 3 days increased volume indicator
+    threeDaysIncreasedVolumeIndicatorRes = threeDaysIncreasedVolumeIndicator(cleanDf)
 
     if candlestickPatternsIndicatorRes:
         tickerResult['candlestickPatternsIndicator'] = candlestickPatternsIndicatorRes
     
-    if threeDaysincreasedVolumeIndicatorRes:
-        tickerResult['threeDaysincreasedVolumeIndicator'] = threeDaysincreasedVolumeIndicatorRes
+    if threeDaysIncreasedVolumeIndicatorRes:
+        tickerResult['threeDaysIncreasedVolumeIndicator'] = threeDaysIncreasedVolumeIndicatorRes
     return tickerResult
 
 def candlestickPatternsIndicator(df, trend):
@@ -95,6 +101,16 @@ def candlestickPatternsIndicator(df, trend):
 
     return tickerDetectionResult
 
-def threeDaysincreasedVolumeIndicator(df):
-    length = len(df)
-    return df.Volume[length-1] > df.Volume[length-2] > df.Volume[length-3]
+def threeDaysIncreasedVolumeIndicator(df):
+    results = {}
+    for i in reversed(range(len(df))):
+        if i-2 < 0:
+            break
+        elif df.Volume[i] > df.Volume[i-1] > df.Volume[i-2]:
+            datetimeReadable = df.index[i].strftime('%Y-%m-%d')
+            if not datetimeReadable in results:
+                results[datetimeReadable] = []
+            
+            results[datetimeReadable].append(True)
+  
+    return results

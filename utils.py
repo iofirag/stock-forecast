@@ -9,7 +9,7 @@ def getPatternInformation(patternName, value, trend):
   # there are more reasons this pattern can be confirm like trend
   # trend
   if (value > 100 or value < -100):
-      patternInformation['confirmedBar'] = True
+      patternInformation['hasConfirmedBar'] = True
 
   return {**patternInformation, **{
     'patternName': patternName,
