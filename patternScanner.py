@@ -1,4 +1,4 @@
-import talib  
+import talib
 import numpy
 
 def get_candle_funcs():  
