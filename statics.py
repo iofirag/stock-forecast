@@ -83,17 +83,20 @@ candleStickSwitcher = {
 #     */
       # (lambda _value: PatternSignal.Bearish.name if _value < 0 else PatternSignal.Bullish.name)(value),
   # 'CDL2CROWS': CDL2CROWS,
-  'CDL2CROWS': lambda value,trend: { # CDL2CROWS
+  'CDL2CROWS': lambda value, trend: { # CDL2CROWS
+    # 'patternValidation': lambda patternSignal, trend: expression
     'patternType': PatternType.Reversal.name,
-    'JapaneseName': 'niwa garasu',
-    'patternSignal': PatternSignal.Bearish.name if value < 0 else PatternSignal.Bullish.name, 
+    'acceptableValues': {
+      PatternSignal.Bearish.name: {'min': -1, 'max': -100}
+    },
+    'patternSignal': PatternSignal.Bearish.name if value < 0 else PatternSignal.N.name,
     'reliability': PatternReliability.Moderate.name,
     # 'confirmedTrend': True if  value > 100 or value < -100 else False,
     'value': value,
     'link': 'https://www.candlescanner.com/wp-content/uploads/2015/08/two-crows1.png',
-    'ta-lib-description': """outInteger is negative (-1 to -100): three black crows is always bearish.
-      the user should consider that 3 black crows is significant when it appears after 
-      a mature advance or at high levels""",
+    'ta-lib-description': """outInteger is negative (-1 to -100): two crows is always bearish; 
+      the user should consider that two crows is significant when it appears in an uptrend, while this function 
+      does not consider the trend""",
     'quantshare-description': 'Two Crows, The Two Crows Pattern is a 3-day pattern.',
     'quantshare-info': """Signal: Bearish
       Pattern: Reversal
@@ -201,8 +204,12 @@ candleStickSwitcher = {
   # 'CDL3OUTSIDE': CDL3OUTSIDE,
   # http://tutorials.topstockresearch.com/candlestick/Bearish/ThreeOutsideDown/TutotrialOnThreeOutsideDownPattern.html
   'CDL3OUTSIDE': lambda value,trend: {
+    'conditions': {
+      PatternSignal.Bullish.name: {'from': 1, 'to': 100, 'preTrend': PatternSignal.Bullish.name},
+      PatternSignal.Bearish.name: {'from': -1, 'to': -100, 'preTrend': PatternSignal.Bearish.name},
+    },
     'patternType': PatternType.Reversal.name,
-    'patternSignal': PatternSignal.Bullish.name if value > 0 else PatternSignal.Bearish.name if value < 0 else PatternSignal.N.name,
+    # 'patternSignal': PatternSignal.Bullish.name if value > 0 else PatternSignal.Bearish.name if value < 0 else PatternSignal.N.name,
     'reliability': PatternReliability.High.name,
     # 'confirmedTrend': True if  value > 100 or value < -100 else False,
     'value': value,
@@ -1093,6 +1100,7 @@ class PatternReliability(Enum):
 class TrendType(Enum):
   Uptrend = 0
   Downtrend = 1
+  Indecision = 2 # dont know
 
 fetchDefaultOptions = {
   'group_by': 'ticker',
@@ -1103,7 +1111,7 @@ fetchDefaultOptions = {
 }
 
 shortTermOptions = {  # short term - 10 days
-  'period': '3wk',
+  'period': '1y',
   'interval': '1d'
 }
 mediumTermOptions = {  # medium term > - 3 month
@@ -1115,6 +1123,11 @@ longTermOptions = { # long term - 10 month
   'interval': '1mo'
 }
 
+indicatorsConfigurations = {
+  'RSI': {
+    'timeperiod': 14
+  }
+}
 
 # 'PATTERN': lambda value,trend: {
 #   'patternType': PatternType.N.name,

@@ -3,6 +3,8 @@ import yfinance as yf
 import numpy as np
 import utils
 import statics
+import sys
+import talib
 
 
 def fetchData(tickerList, fetchOptions):
@@ -60,25 +62,27 @@ def fetchData(tickerList, fetchOptions):
 
 def investigateTickerDf(df):
     cleanDf = utils.cleanDf(df)
-    trend = utils.identifyTrend(df.Open, df.High, df.Low, df.Close, df.Volume)
     
     tickerResult = {}
     # more indicators:
     # http://tutorials.topstockresearch.com/candlestick/Bearish/DarkCloudCover/TutotrialOnDarkCloudCoverChartPattern.html
-    # momentum indicator
+    # momentum indicator (RSI)
+    momentumIndicatorRes = momentumIndicator(cleanDf)
+    trend = utils.identifyTrend(df.Open, df.High, df.Low, df.Close, df.Volume)
 
-    # candlestick patterns indicators
-    candlestickPatternsIndicatorRes = candlestickPatternsIndicator(cleanDf, trend)
+    ##################################
+    # set results:
+    ##################################
+    return {
+        'momentumIndicator': momentumIndicatorRes,
+        'candlestickPatternsIndicator': candlestickPatternsIndicator(cleanDf, trend),       # candlestick patterns indicators
+        'threeDaysIncreasedVolumeIndicator': threeDaysIncreasedVolumeIndicator(cleanDf),    # 3 days increased volume indicator
+    }
 
-    # 3 days increased volume indicator
-    threeDaysIncreasedVolumeIndicatorRes = threeDaysIncreasedVolumeIndicator(cleanDf)
-
-    if candlestickPatternsIndicatorRes:
-        tickerResult['candlestickPatternsIndicator'] = candlestickPatternsIndicatorRes
-    
-    if threeDaysIncreasedVolumeIndicatorRes:
-        tickerResult['threeDaysIncreasedVolumeIndicator'] = threeDaysIncreasedVolumeIndicatorRes
-    return tickerResult
+def momentumIndicator(df):
+    return {
+        'rsi': utils.calculateRSI(df, array=True)
+    }
 
 def candlestickPatternsIndicator(df, trend):
     patternNameList = get_candle_funcs()
@@ -92,7 +96,7 @@ def candlestickPatternsIndicator(df, trend):
 
         for i in range(len(filteredPatternNameResultList)):
             # Datetime readable string
-            datetimeReadable = filteredPatternNameResultList.index[i].strftime('%Y-%m-%d')
+            datetimeReadable = utils.getReadableTimestamp(filteredPatternNameResultList.index[i])
             if not datetimeReadable in tickerDetectionResult:
                 tickerDetectionResult[datetimeReadable] = []
             
@@ -107,7 +111,7 @@ def threeDaysIncreasedVolumeIndicator(df):
         if i-2 < 0:
             break
         elif df.Volume[i] > df.Volume[i-1] > df.Volume[i-2]:
-            datetimeReadable = df.index[i].strftime('%Y-%m-%d')
+            datetimeReadable = utils.getReadableTimestamp(df.index[i])
             if not datetimeReadable in results:
                 results[datetimeReadable] = []
             
