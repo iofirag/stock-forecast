@@ -1124,8 +1124,11 @@ longTermOptions = { # long term - 10 month
 }
 
 indicatorsConfigurations = {
-  'RSI': {
+  'rsi': {
     'timeperiod': 14
+  },
+  'increasedVolumeIndicator': {
+    'timeperiod': 3
   }
 }
 

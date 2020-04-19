@@ -227,3 +227,11 @@ print(len( talib.get_function_groups()['Pattern Recognition']))
 # CDLUNIQUE3RIVER Unique 3 River
 # CDLUPSIDEGAP2CROWS Upside Gap Two Crows
 # CDLXSIDEGAP3METHODS Upside/Downside Gap Three Method
+
+
+# if trendExist:
+  #                 datetimeReadable = utils.getReadableTimestamp(df.index[targetDayIndex])
+#                 if not datetimeReadable in results:
+#                     results[datetimeReadable] = []
+
+#                 results[datetimeReadable].append(True)

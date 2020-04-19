@@ -5,6 +5,7 @@ import utils
 import statics
 import sys
 import talib
+import pandas as pd
 
 
 def fetchData(tickerList, fetchOptions):
@@ -59,30 +60,93 @@ def fetchData(tickerList, fetchOptions):
         raise
 
 
-
 def investigateTickerDf(df):
     cleanDf = utils.cleanDf(df)
     
     tickerResult = {}
+   
     # more indicators:
     # http://tutorials.topstockresearch.com/candlestick/Bearish/DarkCloudCover/TutotrialOnDarkCloudCoverChartPattern.html
     # momentum indicator (RSI)
-    momentumIndicatorRes = momentumIndicator(cleanDf)
+    # momentumIndicatorRes = momentumIndicator(cleanDf)
     trend = utils.identifyTrend(df.Open, df.High, df.Low, df.Close, df.Volume)
 
+    ta = technicalIndicatorsDf(cleanDf)
+    # ta.to_json(r'ta-data.json')
     ##################################
     # set results:
     ##################################
     return {
-        'momentumIndicator': momentumIndicatorRes,
+        'ta': ta,
+        # 'momentumIndicator': momentumIndicatorRes,
         'candlestickPatternsIndicator': candlestickPatternsIndicator(cleanDf, trend),       # candlestick patterns indicators
-        'threeDaysIncreasedVolumeIndicator': threeDaysIncreasedVolumeIndicator(cleanDf),    # 3 days increased volume indicator
+        f'{statics.indicatorsConfigurations["increasedVolumeIndicator"]["timeperiod"]}DaysIncreasedVolumeIndicator': increasedVolumeBarsIndicator(cleanDf, statics.indicatorsConfigurations["increasedVolumeIndicator"]["timeperiod"]),    # 3 days increased volume indicator
     }
 
-def momentumIndicator(df):
-    return {
-        'rsi': utils.calculateRSI(df, array=True)
-    }
+def technicalIndicatorsDf(daily_data):
+        """
+        Assemble a dataframe of technical indicator series for a single stock
+        """
+        o = daily_data['Open'].values
+        c = daily_data['Close'].values
+        h = daily_data['High'].values
+        l = daily_data['Low'].values
+        v = daily_data['Volume'].astype(float).values
+        # define the technical analysis matrix
+
+        # Most data series are normalized by their series' mean
+        ta = {} #pd.DataFrame()
+        ta['MA5'] = talib.MA(c, timeperiod=5)
+        ta['MA10'] = talib.MA(c, timeperiod=10)
+        ta['MA20'] = talib.MA(c, timeperiod=20)
+        ta['MA60'] = talib.MA(c, timeperiod=60)
+        ta['MA120'] = talib.MA(c, timeperiod=120)
+        ta['MA5'] = talib.MA(v, timeperiod=5)
+        ta['MA10'] = talib.MA(v, timeperiod=10)
+        ta['MA20'] = talib.MA(v, timeperiod=20)
+        ta['ADX'] = talib.ADX(h, l, c, timeperiod=14)
+        ta['ADXR'] = talib.ADXR(h, l, c, timeperiod=14)
+        ta['MACD'] = talib.MACD(c, fastperiod=12, slowperiod=26, signalperiod=9)[0]
+        ta['RSI'] = talib.RSI(c, timeperiod=14)
+        ta['BBANDS_U'] = talib.BBANDS(c, timeperiod=5, nbdevup=2, nbdevdn=2, matype=0)[0]
+        ta['BBANDS_M'] = talib.BBANDS(c, timeperiod=5, nbdevup=2, nbdevdn=2, matype=0)[1]
+        ta['BBANDS_L'] = talib.BBANDS(c, timeperiod=5, nbdevup=2, nbdevdn=2, matype=0)[2]
+        ta['AD'] = talib.AD(h, l, c, v)        
+        ta['ATR'] = talib.ATR(h, l, c, timeperiod=14)        
+        ta['HT_DC'] = talib.HT_DCPERIOD(c)        
+        ta["High/Open"] = h / o
+        ta["Low/Open"] = l / o
+        ta["Close/Open"] = c / o
+        ta['Open'] = o
+        ta['Close'] = c
+        ta['High'] = h
+        ta['Low'] = l
+        ta['Volume'] = v
+
+        # Normalized values
+        ta['MA5-normalized'] = talib.MA(c, timeperiod=5) / np.nanmean(talib.MA(c, timeperiod=5))
+        ta['MA10-normalized'] = talib.MA(c, timeperiod=10) / np.nanmean(talib.MA(c, timeperiod=10))
+        ta['MA20-normalized'] = talib.MA(c, timeperiod=20) / np.nanmean(talib.MA(c, timeperiod=20))
+        ta['MA60-normalized'] = talib.MA(c, timeperiod=60) / np.nanmean(talib.MA(c, timeperiod=60))
+        ta['MA120-normalized'] = talib.MA(c, timeperiod=120) / np.nanmean(talib.MA(c, timeperiod=120))
+        ta['MA5-normalized'] = talib.MA(v, timeperiod=5) / np.nanmean(talib.MA(v, timeperiod=5))
+        ta['MA10-normalized'] = talib.MA(v, timeperiod=10) / np.nanmean(talib.MA(v, timeperiod=10))
+        ta['MA20-normalized'] = talib.MA(v, timeperiod=20) / np.nanmean(talib.MA(v, timeperiod=20))
+        ta['ADX-normalized'] = talib.ADX(h, l, c, timeperiod=14) / np.nanmean(talib.ADX(h, l, c, timeperiod=14))
+        ta['ADXR-normalized'] = talib.ADXR(h, l, c, timeperiod=14) / np.nanmean(talib.ADXR(h, l, c, timeperiod=14))
+        ta['MACD-normalized'] = talib.MACD(c, fastperiod=12, slowperiod=26, signalperiod=9)[0] / \
+                     np.nanmean(talib.MACD(c, fastperiod=12, slowperiod=26, signalperiod=9)[0])
+        ta['RSI-normalized'] = talib.RSI(c, timeperiod=14) / np.nanmean(talib.RSI(c, timeperiod=14))
+        ta['BBANDS_U-normalized'] = talib.BBANDS(c, timeperiod=5, nbdevup=2, nbdevdn=2, matype=0)[0] / \
+                         np.nanmean(talib.BBANDS(c, timeperiod=5, nbdevup=2, nbdevdn=2, matype=0)[0])
+        ta['BBANDS_M-normalized'] = talib.BBANDS(c, timeperiod=5, nbdevup=2, nbdevdn=2, matype=0)[1] / \
+                         np.nanmean(talib.BBANDS(c, timeperiod=5, nbdevup=2, nbdevdn=2, matype=0)[1])
+        ta['BBANDS_L-normalized'] = talib.BBANDS(c, timeperiod=5, nbdevup=2, nbdevdn=2, matype=0)[2] / \
+                         np.nanmean(talib.BBANDS(c, timeperiod=5, nbdevup=2, nbdevdn=2, matype=0)[2])
+        ta['AD-normalized'] = talib.AD(h, l, c, v) / np.nanmean(talib.AD(h, l, c, v))
+        ta['ATR-normalized'] = talib.ATR(h, l, c, timeperiod=14) / np.nanmean(talib.ATR(h, l, c, timeperiod=14))
+        ta['HT_DC-normalized'] = talib.HT_DCPERIOD(c) / np.nanmean(talib.HT_DCPERIOD(c))
+        return ta
 
 def candlestickPatternsIndicator(df, trend):
     patternNameList = get_candle_funcs()
@@ -105,16 +169,18 @@ def candlestickPatternsIndicator(df, trend):
 
     return tickerDetectionResult
 
-def threeDaysIncreasedVolumeIndicator(df):
+def increasedVolumeBarsIndicator(df, incVolumeBars):
+    # n days
+    """Dataframe oldest to newest"""
     results = {}
-    for i in reversed(range(len(df))):
-        if i-2 < 0:
-            break
-        elif df.Volume[i] > df.Volume[i-1] > df.Volume[i-2]:
-            datetimeReadable = utils.getReadableTimestamp(df.index[i])
-            if not datetimeReadable in results:
-                results[datetimeReadable] = []
-            
-            results[datetimeReadable].append(True)
-  
+    counter = 0
+    # Iterate all rows
+    for i in range(len(df)):
+        if i+1 < len(df) and df.Volume[i] < df.Volume[i+1]:
+            counter += 1
+            if counter >= incVolumeBars:
+                # save date
+                datetimeReadable = utils.getReadableTimestamp(df.index[i+1])
+                results[datetimeReadable] = True
+        else: counter = 0
     return results

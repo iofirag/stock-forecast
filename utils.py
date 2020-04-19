@@ -40,7 +40,7 @@ def cleanDf(df):
     return df.dropna()  # clean df rows from nan values
 
 def calculateRSI(df, array=False):
-  rsiList = talib.RSI(df.Close.values, statics.indicatorsConfigurations['RSI']['timeperiod'])
+  rsiList = talib.RSI(df.Close.values, statics.indicatorsConfigurations['rsi']['timeperiod'])
   rsiResult = {}
   if array:
     for i in range(len(df)):
