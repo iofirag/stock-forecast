@@ -49,7 +49,7 @@ def fetchData(tickerList, fetchOptions):
 
         results = {
             'alerts': {},
-            'data': data,
+            # 'data': data,
         }
         for ticker in tickerList:
             tickerInvestigationData = investigateTickerDf(data[ticker])
