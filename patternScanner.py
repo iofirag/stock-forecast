@@ -2,7 +2,7 @@ import talib
 import numpy
 
 def get_candle_funcs():  
-    funcs = {}  
+    funcs = {}
     for name in talib.get_functions():  
         if name.startswith('CDL'):  
             funcs[name] = getattr(talib, name)  

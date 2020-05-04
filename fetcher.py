@@ -5,7 +5,6 @@ import utils
 import statics
 import sys
 import talib
-import pandas as pd
 
 
 def fetchData(tickerList, fetchOptions):
@@ -47,11 +46,16 @@ def fetchData(tickerList, fetchOptions):
             proxy = fetchOptions['proxy'],
         )
         
-        results = {}
+
+        results = {
+            'alerts': {},
+            'data': data,
+        }
         for ticker in tickerList:
             tickerInvestigationData = investigateTickerDf(data[ticker])
             if tickerInvestigationData:
-                results[ticker] = tickerInvestigationData
+                results['alerts'][ticker] = tickerInvestigationData
+
 
         return results
 
