@@ -3,7 +3,7 @@ import numpy
 
 def get_candle_funcs():  
     funcs = {}
-    for name in talib.get_functions():  
+    for name in talib.get_functions():
         if name.startswith('CDL'):  
             funcs[name] = getattr(talib, name)  
     return funcs

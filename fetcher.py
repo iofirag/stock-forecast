@@ -169,7 +169,8 @@ def candlestickPatternsIndicator(df, trend):
                 tickerDetectionResult[datetimeReadable] = []
             
             patternInformation = utils.getPatternInformation(patternName, filteredPatternNameResultList[i], trend)
-            tickerDetectionResult[datetimeReadable].append(patternInformation)
+            if (patternInformation):
+                tickerDetectionResult[datetimeReadable].append(patternInformation)
 
     return tickerDetectionResult
 

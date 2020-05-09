@@ -3,20 +3,37 @@ import numpy as np
 import talib
 import statics
 
-def getPatternInformation(patternName, value, trend):
-  detectedFunction = candleStickSwitcher.get(patternName, lambda _value,_trend: {'error': f'missing pattern={patternName} with value={_value} in trend={_trend}'})
-  patternInformation = detectedFunction(value, trend)
+def getPatternInformation(patternName, value, currentTrend):
+  detectedFunction = candleStickSwitcher.get(patternName, lambda _value,_currentTrend: {'error': f'missing pattern={patternName} with value={_value} in currentTrend={_currentTrend}'})
+  patternInformation = detectedFunction(value, currentTrend)
 
   # confirmation
   # there are more reasons this pattern can be confirm like trend
   # trend
-  if (value > 100 or value < -100):
-      patternInformation['hasConfirmedBar'] = True
+  # if (value > 100 or value < -100):
+  #     patternInformation['hasConfirmedBar'] = True
+  # result = {}
+  for criteria in patternInformation.acceptableValues():
+    if (criteria.low < value and value < criteria.high and criteria.currentTrend == currentTrend) \
+      or criteria.predictedTrend == statics.PatternSignal.Indecision:
+      # Build result object
+      criteria['value'] = value
+      if not 'reliability' in criteria or criteria['reliability']:
+        criteria['reliability'] = patternInformation.reliability
+      if not 'description' in criteria or criteria['description']:
+        criteria['description'] = patternInformation.description
 
-  return {**patternInformation, **{
-    'patternName': patternName,
-    'value': value
-  }}
+      # result['patternType']: statics.PatternType(criteria.patternType).name # criteria.patternType
+      # criteria['sourceCode'] = f'https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_${patternName}.c#l239'
+      return criteria
+      # break
+      # patternInformation[]
+
+  return {}
+  # return {**patternInformation, **{
+  #   'patternName': patternName,
+  #   'value': value
+  # }}
 
 def getShortTermOptions():
   return dict(fetchDefaultOptions, **shortTermOptions)
