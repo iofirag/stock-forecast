@@ -627,10 +627,9 @@ candleStickSwitcher = {
     'reliability': PatternReliability.N.name,
     # # 'value': value,
     'img': '',
-    'description': 'https://www.investopedia.com/terms/h/hammer.asp',
+    'description': ['https://www.investopedia.com/terms/h/hammer.asp'],
   },
 
-  #####################here
   # /* Proceed with the calculation for the requested range.
   #   * Must have:
   #   * - small real body
@@ -645,17 +644,12 @@ candleStickSwitcher = {
   # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLHANGINGMAN.c#l239"
   'CDLHANGINGMAN': lambda value,trend: {
     'acceptableValues': [
-#       {'low': 1, 'high': 100, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Continuation},
-#       {'low': -100, 'high': -1, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bearish, 'patternType': PatternType.Continuation},
-#       {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal},
-#       {'low': -100, 'high': -1, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bearish, 'patternType': PatternType.Reversal},
-#       {'low': 1, 'high': 100, 'currentTrend': TrendType.Indecision, 'predictedTrend': PatternSignal.Indecision, 'patternType': PatternType.Indecision},
-#       {'low': -100, 'high': -1, 'currentTrend': TrendType.Indecision, 'predictedTrend': PatternSignal.Indecision, 'patternType': PatternType.Indecision},
+      {'low': -100, 'high': -1, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bearish, 'patternType': PatternType.Reversal},
     ],
     'reliability': PatternReliability.N.name,
     # # 'value': value,
     'img': '',
-    'description': '',
+    'description': ['https://www.investopedia.com/articles/active-trading/040914/understanding-hanging-man-optimistic-candlestick-pattern.asp'],
   },
 
   # /* Proceed with the calculation for the requested range.
@@ -674,17 +668,13 @@ candleStickSwitcher = {
   "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLHARAMI.c#l239"
   'CDLHARAMI': lambda value,trend: {
     'acceptableValues': [
-#       {'low': 1, 'high': 100, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Continuation},
-#       {'low': -100, 'high': -1, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bearish, 'patternType': PatternType.Continuation},
-#       {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal},
-#       {'low': -100, 'high': -1, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bearish, 'patternType': PatternType.Reversal},
-#       {'low': 1, 'high': 100, 'currentTrend': TrendType.Indecision, 'predictedTrend': PatternSignal.Indecision, 'patternType': PatternType.Indecision},
-#       {'low': -100, 'high': -1, 'currentTrend': TrendType.Indecision, 'predictedTrend': PatternSignal.Indecision, 'patternType': PatternType.Indecision},
+      {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal},
+      {'low': -100, 'high': -1, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bearish, 'patternType': PatternType.Reversal},
     ],
     'reliability': PatternReliability.N.name,
     # # 'value': value,
     'img': '',
-    'description': '',
+    'description': ['https://www.investopedia.com/terms/b/bullishharami.asp', 'https://www.investopedia.com/terms/b/bearishharami.asp'],
   },
 
   # /* Proceed with the calculation for the requested range.
@@ -699,19 +689,16 @@ candleStickSwitcher = {
   "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLHARAMICROSS.c#l239"
   'CDLHARAMICROSS': lambda value,trend: {
     'acceptableValues': [
-#       {'low': 1, 'high': 100, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Continuation},
-#       {'low': -100, 'high': -1, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bearish, 'patternType': PatternType.Continuation},
-#       {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal},
-#       {'low': -100, 'high': -1, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bearish, 'patternType': PatternType.Reversal},
-#       {'low': 1, 'high': 100, 'currentTrend': TrendType.Indecision, 'predictedTrend': PatternSignal.Indecision, 'patternType': PatternType.Indecision},
-#       {'low': -100, 'high': -1, 'currentTrend': TrendType.Indecision, 'predictedTrend': PatternSignal.Indecision, 'patternType': PatternType.Indecision},
+      {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal},
+      {'low': -100, 'high': -1, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bearish, 'patternType': PatternType.Reversal},
     ],
     'reliability': PatternReliability.N.name,
     # 'value': value,
     'img': '',
-    'description': '',
+    'description': ['https://www.investopedia.com/terms/h/haramicross.asp'],
   },
 
+  #####################here
   # /* Proceed with the calculation for the requested range.
   #   * Must have:
   #   * - short real body

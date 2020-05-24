@@ -13,21 +13,23 @@ def getPatternInformation(patternName, value, currentTrend):
   # if (value > 100 or value < -100):
   #     patternInformation['hasConfirmedBar'] = True
   # result = {}
-  for criteria in patternInformation.acceptableValues():
-    if (criteria.low < value and value < criteria.high and criteria.currentTrend == currentTrend) \
-      or criteria.predictedTrend == statics.PatternSignal.Indecision:
+  for criteria in patternInformation['acceptableValues']:
+    if (criteria['low'] < value and value < criteria['high'] and criteria['currentTrend'] == currentTrend) \
+      or criteria['predictedTrend'] == statics.PatternSignal.Indecision:
       # Build result object
       criteria['value'] = value
       if not 'reliability' in criteria or criteria['reliability']:
-        criteria['reliability'] = patternInformation.reliability
+        criteria['reliability'] = patternInformation['reliability']
       if not 'description' in criteria or criteria['description']:
-        criteria['description'] = patternInformation.description
+        criteria['description'] = patternInformation['description']
 
       # result['patternType']: statics.PatternType(criteria.patternType).name # criteria.patternType
       # criteria['sourceCode'] = f'https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_${patternName}.c#l239'
       return criteria
       # break
       # patternInformation[]
+  else:
+    print(f'{criteria} missing')
 
   return {}
   # return {**patternInformation, **{
