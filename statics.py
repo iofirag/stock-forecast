@@ -81,7 +81,7 @@ candleStickSwitcher = {
   #   * the user should consider that two crows is significant when it appears in an uptrend, while this function 
   #   * does not consider the trend
   #   */
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDL2CROWS.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDL2CROWS.c#l239"
   'CDL2CROWS': lambda value, trend: {
     'acceptableValues': [
       {'low': -100, 'high': -1, 'currentTrend': TrendType.Uptrend, 'predict': PatternSignal.Bearish, 'patternType': PatternType.Reversal}
@@ -104,7 +104,7 @@ candleStickSwitcher = {
   #   * while this function does not consider it
   #   */
   ## high. reversal. 78% bearish
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDL3BLACKCROWS.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDL3BLACKCROWS.c#l239"
   'CDL3BLACKCROWS': lambda value,trend: {
     'acceptableValues': [
       {'low': -100, 'high': -1, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bearish, 'patternType': PatternType.Reversal}
@@ -125,7 +125,7 @@ candleStickSwitcher = {
   #   * the user should consider that a three inside up is significant when it appears in a downtrend and a three inside
   #   * down is significant when it appears in an uptrend, while this function does not consider the trend
   #   */
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDL3INSIDE.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDL3INSIDE.c#l239"
   'CDL3INSIDE': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal},
@@ -149,7 +149,7 @@ candleStickSwitcher = {
   #   * the first three candles, while this function does not consider it
   #   */
   ## high. reversal. 84% bullish. 65% bearish
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDL3LINESTRIKE.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDL3LINESTRIKE.c#l239"
   'CDL3LINESTRIKE': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Continuation},
@@ -171,7 +171,7 @@ candleStickSwitcher = {
   #   * in an uptrend, while this function does not consider it
   #   */
   # http://tutorials.topstockresearch.com/candlestick/Bearish/ThreeOutsideDown/TutotrialOnThreeOutsideDownPattern.html
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDL3OUTSIDE.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDL3OUTSIDE.c#l239"
   'CDL3OUTSIDE': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal},
@@ -194,7 +194,7 @@ candleStickSwitcher = {
   #   * the user should consider that 3 stars in the south is significant when it appears in downtrend, while this function 
   #   * does not consider it
   #   */
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDL3STARSINSOUTH.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDL3STARSINSOUTH.c#l239"
   'CDL3STARSINSOUTH': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal},
@@ -218,7 +218,7 @@ candleStickSwitcher = {
   #   * the user should consider that 3 white soldiers is significant when it appears in downtrend, while this function 
   #   * does not consider it
   #   */
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDL3WHITESOLDIERS.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDL3WHITESOLDIERS.c#l239"
   'CDL3WHITESOLDIERS': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal},
@@ -245,7 +245,7 @@ candleStickSwitcher = {
   #   * an uptrend or downtrend, while this function does not consider the trend
   #   */
   ## high. reversal. 70% bullish
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLABANDONEDBABY.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLABANDONEDBABY.c#l239"
   'CDLABANDONEDBABY': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal, 'description': 'https://www.investopedia.com/terms/b/bullish-abandoned-baby.asp'},
@@ -269,7 +269,7 @@ candleStickSwitcher = {
   #   * the user should consider that advance block is significant when it appears in uptrend, while this function 
   #   * does not consider it
   #   */
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLADVANCEBLOCK.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLADVANCEBLOCK.c#l239"
   'CDLADVANCEBLOCK': lambda value,trend: {
     'acceptableValues': [
       {'low': -100, 'high': -1, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bearish, 'patternType': PatternType.Reversal}
@@ -287,7 +287,7 @@ candleStickSwitcher = {
   #   * The meaning of "long" and "very short" is specified with TA_SetCandleSettings
   #   * outInteger is positive (1 to 100) when white (bullish), negative (-1 to -100) when black (bearish)
   #   */
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLBELTHOLD.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLBELTHOLD.c#l239"
   'CDLBELTHOLD': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal, 'description': 'https://www.investopedia.com/terms/b/bullishbelthold.asp'},
@@ -312,7 +312,7 @@ candleStickSwitcher = {
   #   * function does not consider it
   #   */
   ## high. reversal. 63% bearish
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLBREAKAWAY.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLBREAKAWAY.c#l239"
   'CDLBREAKAWAY': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal, 'description': 'https://www.candlesticker.com/Pattern.aspx?lang=en&Pattern=5101'},
@@ -331,7 +331,7 @@ candleStickSwitcher = {
   #   * The meaning of "long" and "very short" is specified with TA_SetCandleSettings
   #   * outInteger is positive (1 to 100) when white (bullish), negative (-1 to -100) when black (bearish)
   #   */
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLCLOSINGMARUBOZU.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLCLOSINGMARUBOZU.c#l239"
   'CDLCLOSINGMARUBOZU': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Continuation},
@@ -356,7 +356,7 @@ candleStickSwitcher = {
   #   * the user should consider that concealing baby swallow is significant when it appears in downtrend, while 
   #   * this function does not consider it
   #   */
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLCONCEALBABYSWALL.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLCONCEALBABYSWALL.c#l239"
   'CDLCONCEALBABYSWALL': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal},
@@ -375,7 +375,7 @@ candleStickSwitcher = {
   #   * outInteger is positive (1 to 100) when bullish or negative (-1 to -100) when bearish;
   #   * the user should consider that counterattack is significant in a trend, while this function does not consider it
   #   */
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLCOUNTERATTACK.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLCOUNTERATTACK.c#l239"
   'CDLCOUNTERATTACK': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal},
@@ -400,7 +400,7 @@ candleStickSwitcher = {
   #   * this function does not consider it
   #   */
   # http://tutorials.topstockresearch.com/candlestick/Bearish/DarkCloudCover/TutotrialOnDarkCloudCoverChartPattern.html
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLDARKCLOUDCOVER.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLDARKCLOUDCOVER.c#l239"
   'CDLDARKCLOUDCOVER': lambda value,trend: {
     'acceptableValues': [
       {'low': -100, 'high': -1, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bearish, 'patternType': PatternType.Reversal},
@@ -420,7 +420,7 @@ candleStickSwitcher = {
   #   * outInteger is always positive (1 to 100) but this does not mean it is bullish: doji shows uncertainty and it is
   #   * neither bullish nor bearish when considered alone
   #   */
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLDOJI.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLDOJI.c#l239"
   'CDLDOJI': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Indecision, 'predictedTrend': PatternSignal.Indecision, 'patternType': PatternType.Indecision},
@@ -444,7 +444,7 @@ candleStickSwitcher = {
   #   * bearishness of the pattern the trend must be analyzed
   #   */
   # reversal
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLDOJISTAR.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLDOJISTAR.c#l239"
   'CDLDOJISTAR': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal, 
@@ -468,7 +468,7 @@ candleStickSwitcher = {
   #   * relatively to the trend
   #   */
   # http://tutorials.topstockresearch.com/candlestick/Bullish/DragonflyDoji/TutotrialOnDragonflyDojiChartPattern.html
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLDRAGONFLYDOJI.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLDRAGONFLYDOJI.c#l239"
   'CDLDRAGONFLYDOJI': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal},
@@ -493,7 +493,7 @@ candleStickSwitcher = {
   #   */
   # high
   # http://tutorials.topstockresearch.com/candlestick/Bearish/BearishEngulfing/TutotrialOnBearishEngulfingChartPattern.html
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLENGULFING.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLENGULFING.c#l239"
   'CDLENGULFING': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal,
@@ -520,7 +520,7 @@ candleStickSwitcher = {
   #   * the user should consider that an evening star is significant when it appears in an uptrend, 
   #   * while this function does not consider the trend
   #   */
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLEVENINGDOJISTAR.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLEVENINGDOJISTAR.c#l239"
   'CDLEVENINGDOJISTAR': lambda value,trend: {
     'acceptableValues': [
       {'low': -100, 'high': -1, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bearish, 'patternType': PatternType.Reversal},
@@ -547,7 +547,7 @@ candleStickSwitcher = {
   ## high. reversal. 72% bearish
   # http://tutorials.topstockresearch.com/candlestick/Bearish/EveningStar/TutotrialOnEveningStarChartPattern.html
   # https://www.investopedia.com/terms/e/eveningstar.asp
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLEVENINGSTAR.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLEVENINGSTAR.c#l239"
   'CDLEVENINGSTAR': lambda value,trend: {
     'acceptableValues': [
       {'low': -100, 'high': -1, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bearish, 'patternType': PatternType.Reversal},
@@ -570,7 +570,7 @@ candleStickSwitcher = {
   #   * or downside gap side-by-side white lines is significant when it appears in a trend, while this function 
   #   * does not consider the trend
   #   */
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLGAPSIDESIDEWHITE.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLGAPSIDESIDEWHITE.c#l239"
   'CDLGAPSIDESIDEWHITE': lambda value,trend: {
     'name': 'GAP SIDE SIDE WHITE',
     'acceptableValues': [
@@ -594,7 +594,7 @@ candleStickSwitcher = {
   #   * relatively to the trend
   #   */
   # http://tutorials.topstockresearch.com/candlestick/Bearish/GravestoneDoji/TutotrialOnGravestoneDojiBearishChartPattern.html
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLGRAVESTONEDOJI.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLGRAVESTONEDOJI.c#l239"
   'CDLGRAVESTONEDOJI': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bearish, 'patternType': PatternType.Reversal},
@@ -619,7 +619,7 @@ candleStickSwitcher = {
   #   * outInteger is positive (1 to 100): hammer is always bullish;
   #   * the user should consider that a hammer must appear in a downtrend, while this function does not consider it
   #   */
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLHAMMER.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLHAMMER.c#l239"
   'CDLHAMMER': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal},
@@ -641,7 +641,7 @@ candleStickSwitcher = {
   #   * the user should consider that a hanging man must appear in an uptrend, while this function does not consider it
   #   */
   # http://tutorials.topstockresearch.com/candlestick/Bearish/HangingMan/TutotrialOnHangingManBearishChartPattern.html
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLHANGINGMAN.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLHANGINGMAN.c#l239"
   'CDLHANGINGMAN': lambda value,trend: {
     'acceptableValues': [
       {'low': -100, 'high': -1, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bearish, 'patternType': PatternType.Reversal},
@@ -665,7 +665,7 @@ candleStickSwitcher = {
   #   * in an uptrend when bearish, while this function does not consider the trend
   #   */
   # http://tutorials.topstockresearch.com/candlestick/Bearish/BearishHarami/TutotrialOnBearishHaramiChartPattern.html
-  "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLHARAMI.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLHARAMI.c#l239"
   'CDLHARAMI': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal},
@@ -686,7 +686,7 @@ candleStickSwitcher = {
   #   * the user should consider that a harami cross is significant when it appears in a downtrend if bullish or 
   #   * in an uptrend when bearish, while this function does not consider the trend
   #   */
-  "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLHARAMICROSS.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLHARAMICROSS.c#l239"
   'CDLHARAMICROSS': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal},
@@ -706,7 +706,7 @@ candleStickSwitcher = {
   #   * outInteger is positive (1 to 100) when white or negative (-1 to -100) when black;
   #   * it does not mean bullish or bearish
   #   */
-  "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLHIGHWAVE.c#l239"
+  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLHIGHWAVE.c#l239"
   'CDLHIGHWAVE': lambda value,trend: {
     'acceptableValues': [
 #       {'low': 1, 'high': 100, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Continuation},
@@ -733,7 +733,7 @@ candleStickSwitcher = {
   #   * Note: if confirmation and a new hikkake come at the same bar, only the new hikkake is reported (the new hikkake
   #   * overwrites the confirmation of the old hikkake)
   #   */
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLHIKKAKE.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLHIKKAKE.c#l239"
   'CDLHIKKAKE': lambda value,trend: {
     'acceptableValues': [
       {'low': 101, 'high': 200 , 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal},
@@ -763,7 +763,7 @@ candleStickSwitcher = {
   #   * or a continuation pattern, so bullish (bearish) modified hikkake is significant when appearing in a downtrend 
   #   * (uptrend)
   #   */
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLHIKKAKEMOD.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLHIKKAKEMOD.c#l239"
   'CDLHIKKAKEMOD': lambda value,trend: {
     'acceptableValues': [
       {'low': 101, 'high': 200 , 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal},
@@ -786,7 +786,7 @@ candleStickSwitcher = {
   #   * the user should consider that homing pigeon is significant when it appears in a downtrend,
   #   * while this function does not consider the trend
   #   */
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLHOMINGPIGEON.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLHOMINGPIGEON.c#l239"
   'CDLHOMINGPIGEON': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal},
@@ -1147,7 +1147,7 @@ candleStickSwitcher = {
   #   * are considered;
   #   * outInteger is positive (1 to 100) or negative (-1 to -100)
   #   */
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLRISEFALL3METHODS.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLRISEFALL3METHODS.c#l239"
   'CDLRISEFALL3METHODS': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Continuation},
@@ -1168,7 +1168,7 @@ candleStickSwitcher = {
   #   * the user should consider that separating lines is significant when coming in a trend and the belt hold has 
   #   * the same direction of the trend, while this function does not consider it
   #   */
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLSEPARATINGLINES.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLSEPARATINGLINES.c#l239"
   'CDLSEPARATINGLINES': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Continuation},
@@ -1191,7 +1191,7 @@ candleStickSwitcher = {
   #   * the user should consider that a shooting star must appear in an uptrend, while this function does not consider it
   #   */
   # # http://tutorials.topstockresearch.com/candlestick/Bearish/ShootingStar/TutotrialOnShootingStarBearishChartPattern.html
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLSHOOTINGSTAR.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLSHOOTINGSTAR.c#l239"
   'CDLSHOOTINGSTAR': lambda value,trend: {
     'acceptableValues': [
       {'low': -100, 'high': -1, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bearish, 'patternType': PatternType.Reversal},
@@ -1210,7 +1210,7 @@ candleStickSwitcher = {
   #   * outInteger is positive (1 to 100) when white, negative (-1 to -100) when black;
   #   * it does not mean bullish or bearish
   #   */
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLSHORTLINE.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLSHORTLINE.c#l239"
   'CDLSHORTLINE': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Continuation},
@@ -1230,7 +1230,7 @@ candleStickSwitcher = {
   #   * outInteger is positive (1 to 100) when white or negative (-1 to -100) when black;
   #   * it does not mean bullish or bearish
   #   */
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLSPINNINGTOP.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLSPINNINGTOP.c#l239"
   'CDLSPINNINGTOP': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal},
@@ -1255,7 +1255,7 @@ candleStickSwitcher = {
   #   * the user should consider that stalled pattern is significant when it appears in uptrend, while this function 
   #   * does not consider it
   #   */
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLSTALLEDPATTERN.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLSTALLEDPATTERN.c#l239"
   'CDLSTALLEDPATTERN': lambda value,trend: {
     'acceptableValues': [
       {'low': -100, 'high': -1, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bearish, 'patternType': PatternType.Reversal},
@@ -1276,7 +1276,7 @@ candleStickSwitcher = {
   #   * the user should consider that stick sandwich is significant when coming in a downtrend, 
   #   * while this function does not consider it
   #   */
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLSTICKSANDWICH.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLSTICKSANDWICH.c#l239"
   'CDLSTICKSANDWICH': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal},
@@ -1297,7 +1297,7 @@ candleStickSwitcher = {
   #   * outInteger is always positive (1 to 100) but this does not mean it is bullish: takuri must be considered
   #   * relatively to the trend
   #   */
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLTAKURI.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLTAKURI.c#l239"
   'CDLTAKURI': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal},
@@ -1320,7 +1320,7 @@ candleStickSwitcher = {
   #   * the user should consider that tasuki gap is significant when it appears in a trend, while this function does 
   #   * not consider it
   #   */
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLTASUKIGAP.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLTASUKIGAP.c#l239"
   ## high. continuation. 57% bullish 
   'CDLTASUKIGAP': lambda value,trend: {
     'acceptableValues': [
@@ -1344,7 +1344,7 @@ candleStickSwitcher = {
   #   * even bullish "when coming in an uptrend or occurring twice within several days" (Steve Nison says), while this 
   #   * function does not consider the trend
   #   */
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLTHRUSTING.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLTHRUSTING.c#l239"
   'CDLTHRUSTING': lambda value,trend: {
     'acceptableValues': [
       {'low': -100, 'high': -1, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bearish, 'patternType': PatternType.Continuation},
@@ -1362,7 +1362,7 @@ candleStickSwitcher = {
   #   * The meaning of "doji" is specified with TA_SetCandleSettings
   #   * outInteger is positive (1 to 100) when bullish or negative (-1 to -100) when bearish
   #   */
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLTRISTAR.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLTRISTAR.c#l239"
   'CDLTRISTAR': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal},
@@ -1384,7 +1384,7 @@ candleStickSwitcher = {
   #   * outInteger is positive (1 to 100): unique 3 river is always bullish and should appear in a downtrend 
   #   * to be significant, while this function does not consider the trend
   #   */
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLUNIQUE3RIVER.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLUNIQUE3RIVER.c#l239"
   'CDLUNIQUE3RIVER': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal},
@@ -1408,7 +1408,7 @@ candleStickSwitcher = {
   #   * the user should consider that an upside gap two crows is significant when it appears in an uptrend, 
   #   * while this function does not consider the trend
   #   */
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLUPSIDEGAP2CROWS.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLUPSIDEGAP2CROWS.c#l239"
   'CDLUPSIDEGAP2CROWS': lambda value,trend: {
     'acceptableValues': [
       {'low': -100, 'high': -1, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bearish, 'patternType': PatternType.Reversal},
@@ -1429,7 +1429,7 @@ candleStickSwitcher = {
   #   * the user should consider that up/downside gap 3 methods is significant when it appears in a trend, while this 
   #   * function does not consider it
   #   */
-  # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLXSIDEGAP3METHODS.c#l239"
+  # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLXSIDEGAP3METHODS.c#l239"
   'CDLXSIDEGAP3METHODS': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Continuation},
