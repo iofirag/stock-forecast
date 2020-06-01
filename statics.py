@@ -89,7 +89,7 @@ candleStickSwitcher = {
     'reliability': PatternReliability.Moderate.name,
     # 'value': value,
     'img': 'https://www.candlescanner.com/wp-content/uploads/2015/08/two-crows1.png',
-    'description': 'https://www.investopedia.com/terms/u/upside-gap-two-crows.asp',
+    'description': ['https://www.investopedia.com/terms/u/upside-gap-two-crows.asp'],
   },
 
   # /* Proceed with the calculation for the requested range.
@@ -134,7 +134,7 @@ candleStickSwitcher = {
     'reliability': PatternReliability.Moderate.name,
     # 'value': value,
     'img': 'https://bpcdn.co/images/2016/05/grade2-three-inside.png',
-    'description': 'https://www.investopedia.com/terms/t/three-inside-updown.asp',
+    'description': ['https://www.investopedia.com/terms/t/three-inside-updown.asp'],
   },
 
   # /* Proceed with the calculation for the requested range.
@@ -158,7 +158,7 @@ candleStickSwitcher = {
     'reliability': PatternReliability.Low.name,
     # 'value': value,
     'img': '',
-    'description': 'https://www.investopedia.com/articles/active-trading/092315/5-most-powerful-candlestick-patterns.asp#three-line-strike',
+    'description': ['https://www.investopedia.com/articles/active-trading/092315/5-most-powerful-candlestick-patterns.asp#three-line-strike'],
   },
   
   # /* Proceed with the calculation for the requested range.
@@ -180,7 +180,7 @@ candleStickSwitcher = {
     'reliability': PatternReliability.High.name,
     # 'value': value,
     'img': 'http://www.tradingpedia.com/wp-content/uploads/2014/02/1.-Evening-star.jpg',
-    'description': 'https://www.investopedia.com/terms/t/three-outside-updown.asp',
+    'description': ['https://www.investopedia.com/terms/t/three-outside-updown.asp'],
   },
 
   # /* Proceed with the calculation for the requested range.
@@ -202,7 +202,7 @@ candleStickSwitcher = {
     'reliability': PatternReliability.Moderate.name,
     # 'value': value,
     'img': 'https://hitandruncandlesticks.com/wp-content/uploads/2016/08/bullish_three_stars_in_the_south.jpg',
-    'description': 'https://www.investopedia.com/terms/t/three-stars-south.asp',
+    'description': ['https://www.investopedia.com/terms/t/three-stars-south.asp'],
   },
 
   # /* Proceed with the calculation for the requested range.
@@ -226,7 +226,7 @@ candleStickSwitcher = {
     'reliability': PatternReliability.High.name,
     # 'value': value,
     'img': 'https://tutorials.topstockresearch.com/candlestick/Bullish/ThreeWhiteSoldiers/ThreeWhiteSoldiers.png',
-    'description': 'https://www.investopedia.com/terms/t/three_white_soldiers.asp',
+    'description': ['https://www.investopedia.com/terms/t/three_white_soldiers.asp'],
   },
 
   # /* Proceed with the calculation for the requested range.
@@ -248,13 +248,13 @@ candleStickSwitcher = {
   # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLABANDONEDBABY.c#l239"
   'CDLABANDONEDBABY': lambda value,trend: {
     'acceptableValues': [
-      {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal, 'description': 'https://www.investopedia.com/terms/b/bullish-abandoned-baby.asp'},
-      {'low': -100, 'high': -1, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bearish, 'patternType': PatternType.Reversal, 'description': 'https://www.investopedia.com/terms/b/bearish-abandoned-baby.asp'}
+      {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal, 'description': ['https://www.investopedia.com/terms/b/bullish-abandoned-baby.asp']},
+      {'low': -100, 'high': -1, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bearish, 'patternType': PatternType.Reversal, 'description': ['https://www.investopedia.com/terms/b/bearish-abandoned-baby.asp']}
     ],
     'reliability': PatternReliability.High.name,
     # 'value': value,
     'img': 'https://mr-uploads.s3.amazonaws.com/uploads/2014/12/abandoned-baby2.png',
-    'description': '',
+    # 'description': [''],
   },
   
   # /* Proceed with the calculation for the requested range.
@@ -277,7 +277,7 @@ candleStickSwitcher = {
     'reliability': PatternReliability.Moderate.name,
     # 'value': value,
     'img': 'https://www.investopedia.com/thmb/tdbMb6qVoafr7S-lAQKjKpiTZaI=/1538x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/dotdash_Final_Advance_Block_Feb_2020-2f102ad610704541ad0583c14d4bbd7a.jpg',
-    'description': 'https://www.investopedia.com/terms/a/advance-block.asp',
+    'description': ['https://www.investopedia.com/terms/a/advance-block.asp'],
   },
 
   # /* Proceed with the calculation for the requested range.
@@ -290,13 +290,13 @@ candleStickSwitcher = {
   # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLBELTHOLD.c#l239"
   'CDLBELTHOLD': lambda value,trend: {
     'acceptableValues': [
-      {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal, 'description': 'https://www.investopedia.com/terms/b/bullishbelthold.asp'},
-      {'low': -100, 'high': -1, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bearish, 'patternType': PatternType.Reversal, 'description': 'https://www.investopedia.com/terms/b/bearishbelthold.asp'},
+      {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal, 'description': ['https://www.investopedia.com/terms/b/bullishbelthold.asp']},
+      {'low': -100, 'high': -1, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bearish, 'patternType': PatternType.Reversal, 'description': ['https://www.investopedia.com/terms/b/bearishbelthold.asp']},
     ],
     'reliability': PatternReliability.Low.name,
     # 'value': value,
     'img': 'https://i.ytimg.com/vi/we62RExJrxM/maxresdefault.jpg',
-    'description': '',
+    # 'description': [''],
   },
 
   # /* Proceed with the calculation for the requested range.
@@ -315,13 +315,13 @@ candleStickSwitcher = {
   # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLBREAKAWAY.c#l239"
   'CDLBREAKAWAY': lambda value,trend: {
     'acceptableValues': [
-      {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal, 'description': 'https://www.candlesticker.com/Pattern.aspx?lang=en&Pattern=5101'},
-      {'low': -100, 'high': -1, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bearish, 'patternType': PatternType.Reversal, 'description': 'https://www.traderslog.com/bearish-breakaway-pattern'},
+      {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal, 'description': ['https://www.candlesticker.com/Pattern.aspx?lang=en&Pattern=5101']},
+      {'low': -100, 'high': -1, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bearish, 'patternType': PatternType.Reversal, 'description': ['https://www.traderslog.com/bearish-breakaway-pattern']},
     ],
     'reliability': PatternReliability.Moderate.name,
     # 'value': value,
     'img': 'https://investorshub.advfn.com/uimage/uploads/2018/1/15/gnshqbreakaway-patterns.png',
-    'description': '',
+    # description': ['',
   },
   
   # /* Proceed with the calculation for the requested range.
@@ -342,7 +342,7 @@ candleStickSwitcher = {
     'reliability': PatternReliability.Low.name,
     # 'value': value,
     'img': 'https://www.elearnmarkets.com/blog/wp-content/uploads/2016/03/CLOSING-MARUBOZU-CANDLESTICKS.jpg',
-    'description': 'https://www.candlescanner.com/candlestick-patterns/closing-black-marubozu/',
+    'description': ['https://www.candlescanner.com/candlestick-patterns/closing-black-marubozu/'],
   },
 
   # /* Proceed with the calculation for the requested range.
@@ -364,7 +364,7 @@ candleStickSwitcher = {
     'reliability': PatternReliability.High.name,
     # 'value': value,
     'img': 'https://www.candlescanner.com/wp-content/uploads/2015/08/cancealing-baby-swallow.png',
-    'description': 'https://www.candlescanner.com/candlestick-patterns/concealing-baby-swallow',
+    'description': ['https://www.candlescanner.com/candlestick-patterns/concealing-baby-swallow'],
   },
 
   # /* Proceed with the calculation for the requested range.
@@ -384,7 +384,7 @@ candleStickSwitcher = {
     'reliability': PatternReliability.N.name,
     # 'value': value,
     'img': 'http://www.traderencyclopedia.com/wiki/images/8/8c/Counterattack.jpg',
-    'description': 'https://www.investopedia.com/terms/c/counterattack.asp',
+    'description': ['https://www.investopedia.com/terms/c/counterattack.asp'],
   },
 
   
@@ -408,7 +408,7 @@ candleStickSwitcher = {
     'reliability': PatternReliability.High.name,
     # 'value': value,
     'img': 'https://mr-uploads.s3.amazonaws.com/uploads/2014/12/dark-cloud-cover1.png',
-    'description': 'https://www.candlescanner.com/candlestick-patterns/dark-cloud-cover/',
+    'description': ['https://www.candlescanner.com/candlestick-patterns/dark-cloud-cover/'],
   },
   
   
@@ -428,7 +428,7 @@ candleStickSwitcher = {
     'reliability': PatternReliability.Low.name,
     # 'value': value,
     'img': 'https://a.c-dn.net/b/3K4xiq/doji-candlestick-pattern_body_standarddoji.png',
-    'description': 'https://www.candlescanner.com/candlestick-patterns/doji-2/',
+    'description': ['https://www.candlescanner.com/candlestick-patterns/doji-2/'],
   },
   
   
@@ -447,10 +447,14 @@ candleStickSwitcher = {
   # # "https://sourceforge.net/p/ta-lib/code/HEAD/tree/trunk/ta-lib/c/src/ta_func/ta_CDLDOJISTAR.c#l239"
   'CDLDOJISTAR': lambda value,trend: {
     'acceptableValues': [
-      {'low': 1, 'high': 100, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal, 
-      'description': 'https://www.adigitalblogger.com/chart-patterns/doji-star-bullish/'},
-      {'low': -100, 'high': -1, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bearish, 'patternType': PatternType.Reversal, 
-      'description': 'https://www.adigitalblogger.com/chart-patterns/doji-star-bearish/'},
+      {
+        'low': 1, 'high': 100, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal, 
+        'description': ['https://www.adigitalblogger.com/chart-patterns/doji-star-bullish/']
+      },
+      {
+        'low': -100, 'high': -1, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bearish, 'patternType': PatternType.Reversal, 
+        'description': ['https://www.adigitalblogger.com/chart-patterns/doji-star-bearish/']
+      },
     ],
     'reliability': PatternReliability.Moderate.name,
     # 'value': value,
@@ -477,7 +481,7 @@ candleStickSwitcher = {
     'reliability': f'{PatternReliability.Low.name}/{PatternReliability.Moderate.name}',
     # 'value': value,
     'img': 'https://tradingcryptocourse.com/wp-content/uploads/2018/11/candlestickpattern7.jpg',
-    'description': 'https://www.adigitalblogger.com/chart-patterns/dragonfly-doji/',
+    'description': ['https://www.adigitalblogger.com/chart-patterns/dragonfly-doji/'],
   },
 
   # /* Proceed with the calculation for the requested range.
@@ -497,14 +501,14 @@ candleStickSwitcher = {
   'CDLENGULFING': lambda value,trend: {
     'acceptableValues': [
       {'low': 1, 'high': 100, 'currentTrend': TrendType.Downtrend, 'predictedTrend': PatternSignal.Bullish, 'patternType': PatternType.Reversal,
-      'description': 'https://www.adigitalblogger.com/chart-patterns/bullish-engulfing-pattern/'},
+      'description': ['https://www.adigitalblogger.com/chart-patterns/bullish-engulfing-pattern/']},
       {'low': -100, 'high': -1, 'currentTrend': TrendType.Uptrend, 'predictedTrend': PatternSignal.Bearish, 'patternType': PatternType.Reversal,
-      'description': 'https://www.adigitalblogger.com/chart-patterns/bearish-engulfing-pattern/'},
+      'description': ['https://www.adigitalblogger.com/chart-patterns/bearish-engulfing-pattern/']},
     ],
     'reliability': PatternReliability.Moderate.name,
     # 'value': value,
     'img': 'https://forextraininggroup.com/wp-content/uploads/2016/11/Engulfing-Pattern-Stop-Loss.png',
-    # 'description': '',
+    # description': [''],
   },
   
   # /* Proceed with the calculation for the requested range.
@@ -528,7 +532,7 @@ candleStickSwitcher = {
     'reliability': PatternReliability.High.name,
     # 'value': value,
     'img': '',
-    'description': 'https://wiki.timetotrade.com/Evening_Doji_Star_Candlestick',
+    'description': ['https://wiki.timetotrade.com/Evening_Doji_Star_Candlestick'],
   },
 
   # /* Proceed with the calculation for the requested range.
@@ -555,7 +559,7 @@ candleStickSwitcher = {
     'reliability': PatternReliability.High.name,
     # 'value': value,
     'img': '',
-    'description': 'https://www.adigitalblogger.com/chart-patterns/evening-star-pattern/',
+    'description': ['https://www.adigitalblogger.com/chart-patterns/evening-star-pattern/'],
   },
 
   # /* Proceed with the calculation for the requested range.
@@ -580,7 +584,7 @@ candleStickSwitcher = {
     'reliability': PatternReliability.Moderate.name,
     # 'value': value,
     'img': '',
-    'description': 'https://www.investopedia.com/terms/u/updown-gap-sidebyside-white-lines.asp',
+    'description': ['https://www.investopedia.com/terms/u/updown-gap-sidebyside-white-lines.asp'],
   },
 
   # /* Proceed with the calculation for the requested range.
@@ -1352,7 +1356,7 @@ candleStickSwitcher = {
     'reliability': PatternReliability.N.name,
     # 'value': value,
     'img': '',
-    'description': '',
+    'description': ['https://www.investopedia.com/terms/t/thrusting-pattern.asp'],
   },
 
   # /* Proceed with the calculation for the requested range.

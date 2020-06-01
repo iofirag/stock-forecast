@@ -5,7 +5,8 @@ import utils
 import statics
 import sys
 import talib
-
+import matplotlib.pyplot as plt
+import pandas as pd
 
 def fetchData(tickerList, fetchOptions):
     try:
@@ -73,9 +74,11 @@ def investigateTickerDf(df):
     # http://tutorials.topstockresearch.com/candlestick/Bearish/DarkCloudCover/TutotrialOnDarkCloudCoverChartPattern.html
     # momentum indicator (RSI)
     # momentumIndicatorRes = momentumIndicator(cleanDf)
-    trend = utils.identifyTrend(df.Open, df.High, df.Low, df.Close, df.Volume)
+    # trend = utils.identifyTrend(df.Open, df.High, df.Low, df.Close, df.Volume)
 
     ta = technicalIndicatorsDf(cleanDf)
+
+    trend = utils.identifyTrend(ta, cleanDf)
     # ta.to_json(r'ta-data.json')
     ##################################
     # set results:
@@ -100,21 +103,23 @@ def technicalIndicatorsDf(daily_data):
 
         # Most data series are normalized by their series' mean
         ta = {} #pd.DataFrame()
+        # ta = pd.DataFrame()
         ta['MA5'] = talib.MA(c, timeperiod=5)
         ta['MA10'] = talib.MA(c, timeperiod=10)
         ta['MA20'] = talib.MA(c, timeperiod=20)
         ta['MA60'] = talib.MA(c, timeperiod=60)
         ta['MA120'] = talib.MA(c, timeperiod=120)
-        ta['MA5'] = talib.MA(v, timeperiod=5)
-        ta['MA10'] = talib.MA(v, timeperiod=10)
-        ta['MA20'] = talib.MA(v, timeperiod=20)
+        ta['MA5Volume'] = talib.MA(v, timeperiod=5)
+        ta['MA10Volume'] = talib.MA(v, timeperiod=10)
+        ta['MA20Volume'] = talib.MA(v, timeperiod=20)
         ta['ADX'] = talib.ADX(h, l, c, timeperiod=14)
         ta['ADXR'] = talib.ADXR(h, l, c, timeperiod=14)
         ta['MACD'] = talib.MACD(c, fastperiod=12, slowperiod=26, signalperiod=9)[0]
         ta['RSI'] = talib.RSI(c, timeperiod=14)
-        ta['BBANDS_U'] = talib.BBANDS(c, timeperiod=5, nbdevup=2, nbdevdn=2, matype=0)[0]
+        ta['BBANDS_U'] = talib.BBANDS(c, timeperiod=20, nbdevup=2, nbdevdn=2, matype=0)[0]
         ta['BBANDS_M'] = talib.BBANDS(c, timeperiod=5, nbdevup=2, nbdevdn=2, matype=0)[1]
         ta['BBANDS_L'] = talib.BBANDS(c, timeperiod=5, nbdevup=2, nbdevdn=2, matype=0)[2]
+        ta['BBP'] = bbp(c)
         ta['AD'] = talib.AD(h, l, c, v)        
         ta['ATR'] = talib.ATR(h, l, c, timeperiod=14)        
         ta['HT_DC'] = talib.HT_DCPERIOD(c)        
@@ -150,7 +155,16 @@ def technicalIndicatorsDf(daily_data):
         ta['AD-normalized'] = talib.AD(h, l, c, v) / np.nanmean(talib.AD(h, l, c, v))
         ta['ATR-normalized'] = talib.ATR(h, l, c, timeperiod=14) / np.nanmean(talib.ATR(h, l, c, timeperiod=14))
         ta['HT_DC-normalized'] = talib.HT_DCPERIOD(c) / np.nanmean(talib.HT_DCPERIOD(c))
+
+        # # Plot
+        # ta[['Close','MA5','MA10']].plot(figsize=(10,5))
+        # plt.show()
         return ta
+
+def bbp(c):
+    up, mid, low = talib.BBANDS(c, timeperiod=20, nbdevup=2, nbdevdn=2, matype=0)
+    bbp = (c - low) / (up - low)
+    return bbp
 
 def candlestickPatternsIndicator(df, trend):
     patternNameList = get_candle_funcs()
@@ -163,13 +177,13 @@ def candlestickPatternsIndicator(df, trend):
         filteredPatternNameResultList = patternNameResult[patternNameResult != 0]
 
         for i in range(len(filteredPatternNameResultList)):
-            # Datetime readable string
-            datetimeReadable = utils.getReadableTimestamp(filteredPatternNameResultList.index[i])
-            if not datetimeReadable in tickerDetectionResult:
-                tickerDetectionResult[datetimeReadable] = []
             
             patternInformation = utils.getPatternInformation(patternName, filteredPatternNameResultList[i], trend)
             if (patternInformation):
+                # Datetime readable string
+                datetimeReadable = utils.getReadableTimestamp(filteredPatternNameResultList.index[i])
+                if not datetimeReadable in tickerDetectionResult:
+                    tickerDetectionResult[datetimeReadable] = []
                 tickerDetectionResult[datetimeReadable].append(patternInformation)
 
     return tickerDetectionResult
