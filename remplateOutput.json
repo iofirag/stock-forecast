@@ -1,0 +1,32 @@
+{
+	"<stock-name>": {
+		"predictions": {},
+		"alerts": {
+			"25-5-2020": {
+				"rsiIndicator": "rsi < 30"
+			}
+		},
+		"allReports": {
+			"25-5-2020": {
+				"rsiIndicator": {value, countedData},
+				"bbpIndicator": {value, countedData},
+				"macdIndicator": {value, countedData},
+			},
+			"26-5-2020": {
+				"rsiIndicator": {value, countedData},
+				"bbpIndicator": {value, countedData},
+				"macdIndicator": {value, countedData},
+			},
+			"27-5-2020": {
+				"rsiIndicator": {value, countedData},
+				"bbpIndicator": {value, countedData},
+				"macdIndicator": {value, countedData},
+			}
+		},
+		"stockPriceData": {
+			"25-5-2020": {open high, low, close},
+			"26-5-2020": {open high, low, close},
+			"27-5-2020": {open high, low, close},
+		}
+	}
+}
