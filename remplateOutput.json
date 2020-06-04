@@ -8,25 +8,25 @@
 		},
 		"allReports": {
 			"25-5-2020": {
-				"rsiIndicator": {value, countedData},
-				"bbpIndicator": {value, countedData},
-				"macdIndicator": {value, countedData},
+				"rsiIndicator": {"value":0, "countedData":{}},
+				"bbpIndicator": {"value":0, "countedData":{}},
+				"macdIndicator": {"value":0, "countedData":{}}
 			},
 			"26-5-2020": {
-				"rsiIndicator": {value, countedData},
-				"bbpIndicator": {value, countedData},
-				"macdIndicator": {value, countedData},
+				"rsiIndicator": {"value":0, "countedData":{}},
+				"bbpIndicator": {"value":0, "countedData":{}},
+				"macdIndicator": {"value":0, "countedData":{}}
 			},
 			"27-5-2020": {
-				"rsiIndicator": {value, countedData},
-				"bbpIndicator": {value, countedData},
-				"macdIndicator": {value, countedData},
+				"rsiIndicator": {"value":0, "countedData":{}},
+				"bbpIndicator": {"value":0, "countedData":{}},
+				"macdIndicator": {"value":0, "countedData":{}}
 			}
 		},
 		"stockPriceData": {
-			"25-5-2020": {open high, low, close},
-			"26-5-2020": {open high, low, close},
-			"27-5-2020": {open high, low, close},
+			"25-5-2020": {"open":0, "high":0, "low":0, "close":0},
+			"26-5-2020": {"open":0, "high":0, "low":0, "close":0},
+			"27-5-2020": {"open":0, "high":0, "low":0, "close":0}
 		}
 	}
 }
